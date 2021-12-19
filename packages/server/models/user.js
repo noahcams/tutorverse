@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },    
+    passwordHash: {
+        type: String,
+        required: true,
+    },
     classId: {
         type: Number,
         required: true,
