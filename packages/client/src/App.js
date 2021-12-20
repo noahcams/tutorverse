@@ -13,8 +13,8 @@ function App() {
     <HashRouter className="App">
       <Navbar />
       <Routes>
-        <Route exact path='/' element={<Dashboard />} />
-        <Route path='login' element={<Login />} />
+        <Route exact path='/' element={<Login />} />
+        <Route path='dashboard' element={<Dashboard />} />
         <Route path='class-list' element={<ClassList />} />
         <Route path='student-list' element={<StudentList />} />
         <Route path='student-details' element={<StudentDetails />} />
