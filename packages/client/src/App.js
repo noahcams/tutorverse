@@ -8,7 +8,14 @@ import TeacherDetails from './components/TeacherDetails/TeacherDetails';
 import Navbar from './components/Navbar/Navbar';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> f8c41d2 (bootstrap working fine, installed nodemon again)
+>>>>>>> main
 
 function App() {
   return (
@@ -16,11 +23,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route exact path='/' element={<Login />} />
-        <Route path='dashboard' element={<Dashboard />} />
-        <Route path='class-list' element={<ClassList />} />
-        <Route path='student-list' element={<StudentList />} />
-        <Route path='student-details' element={<StudentDetails />} />
-        <Route path='teacher-details' element={<TeacherDetails />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/class-list' element={<ClassList />} />
+        <Route path='/student-list' element={<StudentList />} />
+        <Route path='/student-details' element={<StudentDetails />} />
+        <Route path='/teacher-details' element={<TeacherDetails />} />
       </Routes>
     </HashRouter>
   );
