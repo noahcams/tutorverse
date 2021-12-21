@@ -10,6 +10,7 @@
   "dependencies": {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "concurrently": "^6.5.0",
     "nodemon": "^2.0.15",
     "bootstrap": "^4.6.0",
@@ -33,6 +34,21 @@
     "concurrently": "^6.5.0",
     "nodemon": "^2.0.15"
 >>>>>>> 6dae53e (bootstrap working fine, installed nodemon again)
+=======
+    "concurrently": "^6.5.0",
+    "nodemon": "^2.0.15"
+=======
+<<<<<<< HEAD
+    "bootstrap": "^4.6.0",
+    "concurrently": "^6.5.0",
+    "nodemon": "^2.0.15",
+    "react-bootstrap": "^2.0.4"
+=======
+    "concurrently": "^6.5.0",
+    "nodemon": "^2.0.15"
+>>>>>>> f8c41d2 (bootstrap working fine, installed nodemon again)
+>>>>>>> 092da63 (bootstrap working fine, installed nodemon again)
+>>>>>>> 988efac (bootstrap working fine, installed nodemon again)
   },
   "scripts": {
     "client": "yarn workspace client start",
