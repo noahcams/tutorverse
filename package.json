@@ -8,10 +8,12 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "concurrently": "^6.5.0"
-  },"scripts": {
+    "concurrently": "^6.5.0",
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
     "client": "yarn workspace client start",
     "server": "yarn workspace server start",
     "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\""
-}
+  }
 }
