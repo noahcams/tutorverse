@@ -12,7 +12,7 @@ export default function Login() {
         <h5>Where Learning Transpires!</h5>
         <Row>
           <Col className='first'
-            md={{ span: 4, offset: 4 }}>
+            md={{ span: 5, offset: 4 }}>
             <Form>
               <Form.Group className='user-email' controlId='formLogInEmail'>
                 <Form.Label>Email Address</Form.Label>

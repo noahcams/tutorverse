@@ -15,7 +15,7 @@ router
     if (user) {
       res.json(user.toJSON());
     } else {
-      res.status(404).end();
+      res.status(404).send("User not found");
     }
   })
   .post('/create', async (req, res) => {

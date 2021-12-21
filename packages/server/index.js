@@ -6,6 +6,8 @@ app.get('/', (req, res) => {
   res.send('Hello World! This is back-end')
 })
 
+// app.use('/users',userRouter)
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
