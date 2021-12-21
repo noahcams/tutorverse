@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
+import './Login.css';
 
 export default function Login() {
   function handleFormSubmit() {
@@ -7,7 +8,7 @@ export default function Login() {
   }
 
   return (
-      <Container>
+      <Container className="login">
         <h1>Tutorverse</h1>
         <h5>Where Learning Transpires!</h5>
         <Row>

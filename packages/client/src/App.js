@@ -15,11 +15,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route exact path='/' element={<Login />} />
-        <Route path='dashboard' element={<Dashboard />} />
-        <Route path='class-list' element={<ClassList />} />
-        <Route path='student-list' element={<StudentList />} />
-        <Route path='student-details' element={<StudentDetails />} />
-        <Route path='teacher-details' element={<TeacherDetails />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/class-list' element={<ClassList />} />
+        <Route path='/student-list' element={<StudentList />} />
+        <Route path='/student-details' element={<StudentDetails />} />
+        <Route path='/teacher-details' element={<TeacherDetails />} />
       </Routes>
     </HashRouter>
   );
