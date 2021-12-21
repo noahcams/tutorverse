@@ -12,6 +12,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "concurrently": "^6.5.0",
     "nodemon": "^2.0.15",
     "bootstrap": "^4.6.0",
@@ -38,6 +39,8 @@
 =======
 =======
 >>>>>>> a0797ea (navbar complete)
+=======
+>>>>>>> cbabd09 (bootstrap working fine, installed nodemon again)
     "concurrently": "^6.5.0",
     "nodemon": "^2.0.15",
     "bootstrap": "^4.6.0",
@@ -54,7 +57,21 @@
 =======
 =======
 >>>>>>> efab59c (navbar complete)
+<<<<<<< HEAD
 >>>>>>> a0797ea (navbar complete)
+=======
+=======
+<<<<<<< HEAD
+    "bootstrap": "^4.6.0",
+    "concurrently": "^6.5.0",
+    "nodemon": "^2.0.15",
+    "react-bootstrap": "^2.0.4"
+=======
+    "concurrently": "^6.5.0",
+    "nodemon": "^2.0.15"
+>>>>>>> f8c41d2 (bootstrap working fine, installed nodemon again)
+>>>>>>> 1dc19aa (bootstrap working fine, installed nodemon again)
+>>>>>>> cbabd09 (bootstrap working fine, installed nodemon again)
   },
   "scripts": {
     "client": "yarn workspace client start",
