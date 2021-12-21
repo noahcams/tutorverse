@@ -8,6 +8,10 @@ import TeacherDetails from './components/TeacherDetails/TeacherDetails';
 import Navbar from './components/Navbar/Navbar';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
+<<<<<<< HEAD
+=======
+
+>>>>>>> f8c41d2 (bootstrap working fine, installed nodemon again)
 
 function App() {
   return (
