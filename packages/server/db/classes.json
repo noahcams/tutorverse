@@ -1,0 +1,1 @@
+{"id":101, "name":"Simple Algebra","teacher":{"$oid":87654321}, "students": [{"$oid":12354678},{"$oid":13245768}]}

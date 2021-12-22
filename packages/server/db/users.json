@@ -1,0 +1,3 @@
+{"id":12345678, "firstName":"Ferris", "lastName":"Bueller", "email":"mydayoff@gmail.com", "passwordHash":"password", "classID": 101, "grades":[60,75,69,72], "type":"student"}
+{"id":13245768, "firstName":"Maple", "lastName":"Syrup", "email":"breakfastchef@gmail.com", "passwordHash":"password", "classID": 101, "grades":[89,50,78,82], "type":"student"}
+{"id":87654321, "firstName":"Mikis", "lastName":"Naughtdom", "email":"quizzinallday@gmail.com", "passwordHash":"password", "classID":101, "grades":[], "type": "teacher"}
