@@ -1,16 +1,16 @@
 import express from 'express';
-import { Assignment } from '../models'
+// import { Assignment } from '../models'
 
 const router = express.Router()
 
 router
-    .route('/:id')
-    .get(async (req, res) => {
-        let assignments = await Assignment.find()
+    .get('/', async (req, res) => {
+        // let assignments = await Assignment.find()
         
-        res.send(assignments)
+        // res.send(assignments)
+        res.json({"message": "assignment"});
     })
-    .post('/create', async (req, res) => {
+    .post(async (req, res) => {
         try{
             const newAssignment = await new Assignment(req.body)
             newAssignment.save()    
@@ -19,7 +19,7 @@ router
             res.status(500).send("Error creating new assignment.")
         }        
     })
-    .delete('/delete/:id', async (req, res) => {
+    .delete(async (req, res) => {
         try{
             Assignment.delete()
         } catch (err){
@@ -27,4 +27,4 @@ router
         }
     })
 
-module.exports = router
+export default router;
