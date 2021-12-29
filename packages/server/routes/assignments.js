@@ -10,34 +10,7 @@ router
         // res.send(assignments)
         res.json({"message": "assignment"});
     })
-<<<<<<< HEAD
-<<<<<<< HEAD
-    .get('/:id',async (req, res) => {
-        const assignment = await Assignment.findOne({ id : req.params.id });
-        if (assignment) {
-          res.json(assignment.toJSON());
-        } else {
-          res.status(404).send("User not found");
-        }
-      })
-    .post('/create', async (req, res) => {
-=======
     .post(async (req, res) => {
->>>>>>> 18c3a9e (Connected the assignment route)
-=======
-    .post(async (req, res) => {
-=======
-    .get('/:id',async (req, res) => {
-        const assignment = await Assignment.findOne({ id : req.params.id });
-        if (assignment) {
-          res.json(assignment.toJSON());
-        } else {
-          res.status(404).send("User not found");
-        }
-      })
-    .post('/create', async (req, res) => {
->>>>>>> 6996957 (working on back-end stuff)
->>>>>>> e3714ed (working on back-end stuff)
         try{
             const newAssignment = await new Assignment(req.body)
             newAssignment.save()    

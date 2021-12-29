@@ -8,19 +8,6 @@ import TeacherDetails from './components/TeacherDetails/TeacherDetails';
 import Navbar from './components/Navbar/Navbar';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> f8c41d2 (bootstrap working fine, installed nodemon again)
-=======
->>>>>>> efab59c (navbar complete)
-=======
-=======
-
->>>>>>> f8c41d2 (bootstrap working fine, installed nodemon again)
->>>>>>> 1dc19aa (bootstrap working fine, installed nodemon again)
 
 function App() {
   return (
