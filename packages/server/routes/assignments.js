@@ -10,6 +10,14 @@ router
         
         res.send(assignments)
     })
+    .get('/:id',async (req, res) => {
+        const assignment = await Assignment.findOne({ id : req.params.id });
+        if (assignment) {
+          res.json(assignment.toJSON());
+        } else {
+          res.status(404).send("User not found");
+        }
+      })
     .post('/create', async (req, res) => {
         try{
             const newAssignment = await new Assignment(req.body)

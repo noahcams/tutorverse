@@ -5,13 +5,12 @@ import { User } from '../models';
 const router = express.Router();
 
 router
-  .route('/:id')
   .get('/', async (req, res) => {
     let users = await User.find()
     res.send(users)
 })
-  .get(async (req, res) => {
-    const user = await User.findOne({ username: req.params.id });
+  .get('/:id',async (req, res) => {
+    const user = await User.findOne({ id: req.params.id });
     if (user) {
       res.json(user.toJSON());
     } else {
