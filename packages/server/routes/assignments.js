@@ -1,14 +1,13 @@
 import express from 'express';
-// import { Assignment } from '../models'
+import { Assignment } from '../models/index.js'
 
 const router = express.Router()
 
 router
     .get('/', async (req, res) => {
-        // let assignments = await Assignment.find()
+        let assignments = await Assignment.find();
         
-        // res.send(assignments)
-        res.json({"message": "assignment"});
+        res.send(assignments);
     })
     .post(async (req, res) => {
         try{

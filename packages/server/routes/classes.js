@@ -1,5 +1,5 @@
 import express from 'express';
-import { Class } from '../models'
+import { Class } from '../models/index.js'
 
 const router = express.Router()
 
@@ -20,4 +20,4 @@ router
         }
     })
 
-module.exports = router
+export default router

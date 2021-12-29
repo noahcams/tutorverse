@@ -1,6 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
-import { User } from '../models';
+import { User } from '../models/index.js';
 import jwt from 'jsonwebtoken';
 
 
@@ -17,7 +17,7 @@ router.route('/:id/:oldPassword').get(async (request, response) => {
   }
 });
 
-router.route('/').get((req, res, next) => {
+router.get('/', (req, res, next) => {
 	res.send('auth endpoint');
 });
 
@@ -84,4 +84,4 @@ router.post('/signin', async (req, res) => {
 		.send({ token, username, uid: user.id });
 });
 
-module.exports = router;
+export default router;
