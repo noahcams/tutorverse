@@ -4,6 +4,7 @@
   "main": "app.js",
   "license": "MIT",
   "private": true,
+  "type": "module",
   "scripts": {
     "start": "nodemon --exec babel-node ./app.js"
   },
