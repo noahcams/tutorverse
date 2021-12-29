@@ -1,10 +1,9 @@
 import React from 'react'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
-import './Login.css';
 
 export default function Login() {
-  function handleFormSubmit() {
-
+  function handleFormSubmit(e) {
+    e.preventDefault();
   }
 
   return (
