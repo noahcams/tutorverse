@@ -12,8 +12,127 @@ code {
     monospace;
 }
 
+<<<<<<< HEAD
 /* -------------------- Login ---------------------- */
 .login {
   text-align: center;
   margin-top: 4rem;
+=======
+.dashPage {
+  display: flex;
+  flex-direction: column;
+  background-color: skyblue;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+}
+
+#topNavbar {
+  align-items: center;
+  background-color: royalblue;
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+}
+
+#logo {
+  margin-left: 50px;
+  align-items: left;
+  font-weight: bold;
+}
+
+#navComp {
+  margin-left: 50px;
+}
+
+#dashContent {
+  display: flex;
+  flex-direction: row;
+}
+
+#assignmentList {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border: royalblue 5px solid;
+  border-radius: 25px;
+  margin: 75px;
+  height: 400px;
+  background-color: palegoldenrod;
+  align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.assignment {
+  display: flex;
+  flex-direction: row;
+  border: royalblue 3px solid;
+  width: 100%;
+  font-weight: normal;
+  font-size: 15px;
+}
+
+.assignmentName {
+  display: flex;
+  justify-content: left;
+  border-left: royalblue 3px solid;
+  border-right: royalblue 3px solid;
+  width: 50%;
+  height: 40px;
+  align-items: center;
+}
+
+.assignmentGrade {
+  display: flex;
+  justify-content: center;
+  border-left: royalblue 3px solid;
+  border-right: royalblue 3px solid;
+  width: 20%;
+  height: 40px;
+  align-items: center;
+}
+
+.assignmentClass {
+  display: flex;
+  justify-content: center;
+  border-left: royalblue 3px solid;
+  border-right: royalblue 3px solid;
+  width: 30%;
+  height: 40px;
+  align-items: center;
+}
+
+#details {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border: royalblue 5px solid;
+  border-radius: 25px;
+  margin: 75px;
+  height: 400px;
+  background-color: palegoldenrod;
+  align-items: center;
+  font-size: 20px;
+}
+
+.studentDetail {
+  display: flex;
+  flex-direction: column;
+  border: royalblue 3px solid;
+  width: 100%;
+  align-items: center;
+  height: 60%;
+}
+
+.teacherDetail {
+  display: flex;
+  flex-direction: column;
+  border: royalblue 3px solid;
+  width: 100%;
+  align-items: center;
+  height: 40%;
+>>>>>>> Styled Dashboard
 }
