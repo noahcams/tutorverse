@@ -8,6 +8,7 @@ import StudentDetails from './components/StudentDetails/StudentDetails';
 import TeacherDetails from './components/TeacherDetails/TeacherDetails';
 import Navbar from './components/Navbar/Navbar';
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   return (
