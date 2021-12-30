@@ -12,12 +12,6 @@ code {
     monospace;
 }
 
-<<<<<<< HEAD
-/* -------------------- Login ---------------------- */
-.login {
-  text-align: center;
-  margin-top: 4rem;
-=======
 .dashPage {
   display: flex;
   flex-direction: column;
@@ -134,5 +128,4 @@ code {
   width: 100%;
   align-items: center;
   height: 40%;
->>>>>>> Styled Dashboard
 }
