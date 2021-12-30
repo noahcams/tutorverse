@@ -22,7 +22,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/signup', async (req, res) => {
-	const { username, email, password } = req.body;
+	const { username, email, password, type, grades, classId, firstName, lastName } = req.body;
 
 	if (!password || !username || !email) {
 		return res.status(422).json({ error: 'Please fill out all fields and make sure they are correct' });
@@ -38,8 +38,13 @@ router.post('/signup', async (req, res) => {
 			bcrypt.hash(password, 12).then((hashedpassword) => {
 				const user = new User({
 					username,
-          email,
-					passwordHash: hashedpassword
+					email,
+					passwordHash: hashedpassword,
+					type,
+					grades,
+					classId,
+					firstName,
+					lastName
 				});
 
 				user
