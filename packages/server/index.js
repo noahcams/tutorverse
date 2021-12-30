@@ -1,11 +1,22 @@
-import express from 'express'
+import express from 'express';
 import router from './routes/index.js';
+import mongoose from 'mongoose';
 const app = express()
 const port = 3001
 
-app.get('/', (req, res) => {
-  res.send('Hello World! This is back-end')
+mongoose.connect('mongodb://localhost:27017/tutorverse');
+
+mongoose.connection.on('connected', () => {
+  console.log('connected to mongoDB')
 })
+
+mongoose.connection.on('error', (err) => {
+  console.log('err connecting', err);
+})
+
+//middleware
+app.use(express.json());
+app.use(express.urlencoded());
 
 app.use('/', router);
 
