@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  SyntaxError: C:\Users\gteam\kenzie\tutor-verse\tutor-verse\package.json: Unexpected token < in JSON at position 170
+  SyntaxError: C:\Users\gteam\kenzie\tutor-verse2\tutor-verse\package.json: Unexpected token < in JSON at position 170
       at JSON.parse (<anonymous>)
       at C:\Users\gteam\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1625:59
       at Generator.next (<anonymous>)
