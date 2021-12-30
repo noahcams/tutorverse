@@ -1,13 +1,15 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
-import { User } from '../models';
+import { User } from '../models/index.js';
 
 const router = express.Router();
 
 router
   .get('/', async (req, res) => {
-    let users = await User.find()
-    res.send(users)
+    // let users = await User.find()
+    // res.send(users)
+    
+    res.send(req.body)
 })
   .get('/:id',async (req, res) => {
     const user = await User.findOne({ id: req.params.id });
@@ -17,12 +19,13 @@ router
       res.status(404).send("User not found");
     }
   })
-  .post('/create', async (req, res) => {
-    let newUser = await new User.find(req.body)
-    newUser.save()
+  .put('/', async (req, res) => {
+    // let user = new User(req.body)
+    // user.save()
 
-    res.json(newUser)
+    // res.json({ "id":12345678 })
+    res.json(JSON.stringify(req));
 })
 // .delete()
 
-module.exports = router;
+export default router;

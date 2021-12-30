@@ -1,5 +1,5 @@
 import express from 'express';
-// import { Assignment } from '../models'
+import { Assignment } from '../models/index.js'
 
 const router = express.Router()
 

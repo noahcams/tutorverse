@@ -1,15 +1,17 @@
 import express from 'express';
-import { Class } from '../models'
+import { Class } from '../models/index.js'
 
 const router = express.Router()
 
 router
     .get('/', async (req, res) => {
-        let classes = await Class.find()
+    //     let classes = await Class.find()
         
-      res.send(classes)
+    //   res.send(classes)
+
+    res.send("these are classes")
     })
-    .post('/',async (req, res) => {
+    .post('/create',async (req, res) => {
         try{
             const newClass = await new Class(req.body)
             newClass.save()
@@ -20,4 +22,4 @@ router
         }
     })
 
-module.exports = router
+export default router;

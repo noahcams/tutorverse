@@ -12,6 +12,7 @@ const classSchema = new mongoose.Schema({
     },
     teacher : {
         type: ObjectId,
+        ref: 'User',
         required: true,
     },
     students : [

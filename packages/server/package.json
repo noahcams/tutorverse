@@ -1,12 +1,12 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "index.js",
   "license": "MIT",
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "nodemon --exec babel-node ./app.js"
+    "start": "nodemon --exec babel-node ./index.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
