@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Container,
+  Nav,
+  Card,
+  Button,
+  Row,
+  Col } from 'react-bootstrap'
 
 export default function Dashboard() {
   return (
     <div>
-      <div className="dashPage">
-      <div id="topNavbar">
-        <div id="logo">
-        Tutorverse
-        </div>
-        <div id="navComp">
-        navbar component
-        </div>
-      </div>
+      <Container className="dashPage">
+        <Nav id="topNavbar">
+          <img alt='Tutorverse Logo' src="tutor-verse/packages/client/public/logo.png"/>
+          <a href="http://localhost:3000/#/dashboard">Dashboard</a>
+        </Nav>
       <div id="dashContent">
         <div id="assignmentList">
           Assignment List
@@ -57,8 +59,18 @@ export default function Dashboard() {
             Teacher Details
           </div>
         </div>
+        <Card style={{ width: '18rem' }}>
+          <Card.Body>
+            <Card.Title>Card Title</Card.Title>
+            <Card.Text>
+              Some quick example text to build on the card title and make up the bulk of
+              the card's content.
+            </Card.Text>
+            <Button variant="primary">Go somewhere</Button>
+          </Card.Body>
+        </Card>
       </div>
-    </div>
+    </Container>
     </div>
   )
 }
