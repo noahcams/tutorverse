@@ -4,11 +4,11 @@ const { ObjectId } = mongoose.Schema.Types;
 const userSchema = new mongoose.Schema({
 	firstName: {
 		type: String,
-		// required: true,
+		required: true,
 	},
 	lastName: {
 		type: String,
-		// required: true,
+		required: true,
 	},
 	username: {
 		type: String,
@@ -20,10 +20,6 @@ const userSchema = new mongoose.Schema({
 	},
 	passwordHash: {
 		type: String,
-		required: true,
-	},
-	classId: {
-		type: Number,
 		required: true,
 	},
 	grades: [
