@@ -2,10 +2,6 @@ import mongoose from 'mongoose'
 const { ObjectId } = mongoose.Schema.Types
 
 const assignmentSchema = new mongoose.Schema({
-    id: {
-        type: Number,
-        required: true,
-    },    
     name: {
         type: String,
         required: true,

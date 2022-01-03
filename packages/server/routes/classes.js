@@ -5,9 +5,14 @@ const router = express.Router()
 
 router
     .get('/', async (req, res) => {
-        let classes = await Class.find()
-        
-      res.send(classes)
+        const classes = await Class.find()
+        classes.length === 0 && res.send('please add assignments!')
+        res.send(classes)
+    })
+    .get('/:id', async (req, res) => {
+        const classData = await Class.findOne({ _id: req.params.id})
+
+        res.send(classData)
     })
     .post('/',async (req, res) => {
         try{

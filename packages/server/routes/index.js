@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
   res.status(200).send('api endpoint')
 })
 
-router.use('/assignment', assignmentRouter);
+router.use('/assignments', assignmentRouter);
 router.use('/users', userRouter);
 router.use('/auth', authRouter);
 router.use('/classes', classRouter);

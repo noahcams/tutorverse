@@ -6,14 +6,15 @@ const router = express.Router()
 router
     .get('/', async (req, res) => {
         let assignments = await Assignment.find();
-        
+        assignments.length === 0 && res.send('please add assignments!')
         res.send(assignments);
+        // console.log(assignments)
     })
-    .post(async (req, res) => {
+    .post('/',async (req, res) => {
         try{
-            const newAssignment = await new Assignment(req.body)
+            const newAssignment = new Assignment(req.body)
             newAssignment.save()    
-            res.json(newAssignment)
+            res.send(newAssignment)
         } catch (err){
             res.status(500).send("Error creating new assignment.")
         }        
