@@ -1,11 +1,11 @@
 import './App.css';
-import Dashboard from './components/DashBoard/Dashboard';
-import Login from './components/Login/Login';
-import ClassList from './components/ClassList/ClassList';
-import StudentList from './components/StudentList/StudentList';
-import StudentDetails from './components/StudentDetails/StudentDetails';
-import TeacherDetails from './components/TeacherDetails/TeacherDetails';
-import Navbar from './components/Navbar/Navbar';
+import Dashboard from './components/Dashboard';
+import Login from './components/Login';
+import ClassList from './components/ClassList';
+import StudentList from './components/StudentList';
+import StudentDetails from './components/StudentDetails';
+import TeacherDetails from './components/TeacherDetails';
+import Navbar from './components/Navbar';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 

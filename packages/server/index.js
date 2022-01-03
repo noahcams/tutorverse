@@ -1,6 +1,7 @@
 import express from 'express';
 import router from './routes/index.js';
 import mongoose from 'mongoose';
+import cors from 'cors';
 const app = express()
 const port = 3001
 
@@ -17,6 +18,7 @@ mongoose.connection.on('error', (err) => {
 //middleware
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(cors());
 
 app.use('/', router);
 

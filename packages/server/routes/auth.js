@@ -78,15 +78,15 @@ router.post('/signin', async (req, res) => {
 		});
 	}
 
-	const userForToken = {
-		username: user.username,
-		id: user._id,
-	};
+	// const userForToken = {
+	// 	username: user.username,
+	// 	id: user._id,
+	// };
 
-	const token = jwt.sign(userForToken, keys.jwt.secret);
+	// const token = jwt.sign(userForToken, keys.jwt.secret);
 	res
 		.status(200)
-		.send({ token, username, uid: user.id });
+		.send({ username, uid: user._id });
 });
 
 export default router;
