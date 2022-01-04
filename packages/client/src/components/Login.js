@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+// import { Redirect } from 'react-router-dom'
 import axios from 'axios';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
-export default function Login() {
+export default function Login(props) {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -11,12 +12,14 @@ export default function Login() {
 		e.preventDefault();
 		try {
 			const res = await axios.post('http://localhost:3001/auth/signin', { username, password });
-			console.log(res);
-      window.location.href = 'http://localhost:3000/#/dashboard';
+			const user = await axios.get(`http://localhost:3001/users/${res.data.uid}`)
+			console.log(user.data);
+      		window.location.href = `http://localhost:3000/#/dashboard/id=${user.data._id}`;
+			// <Redirect to="/#/dashboard" />;
 		} catch (error) {
 			console.error(error);
 			console.log('invalid');
-			toast.error('Invalid username or password');
+			// toast.error('Invalid username or password');
 		}
 	};
 

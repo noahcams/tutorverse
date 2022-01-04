@@ -6,14 +6,32 @@ import { Container,
   ListGroup,
   Row,
   Col } from 'react-bootstrap'
-  import StudentDetails from './StudentDetails.js'
-  import TeacherDetails from './TeacherDetails.js'
+import { useParams } from 'react-router-dom'
+import StudentDetails from './StudentDetails.js'
+import TeacherDetails from './TeacherDetails.js'
+import axios from 'axios'
 
+
+  
 export default function Dashboard(props) {
-  const [user, setUser] = useState(props)
-  // get classId from student and use Id to get class and assignments
+  const [user, setUser] = useState({})
+  
+  // get classId from URL
+  console.log(props)
+  let getUser = async (id) => {
+    try {
+      const holder = await axios.get(`/users/${id}`)
+      console.log(holder)
+      setUser(holder)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+    // useEffect(() => {
 
+  // },[])
 
+  // getUser(props.location.params.id)
   
   return (
     <div>
