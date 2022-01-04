@@ -3,73 +3,68 @@ import { Container,
   Nav,
   Card,
   Button,
+  ListGroup,
   Row,
   Col } from 'react-bootstrap'
+  import StudentDetails from '../StudentDetails/StudentDetails.js'
+  import TeacherDetails from '../TeacherDetails/TeacherDetails.js'
 
-export default function Dashboard() {
+export default function Dashboard(props) {
+  const [user, setUser] = useState(props)
+  // get classId from student and use Id to get class and assignments
+
+
+  
   return (
     <div>
       <Container className="dashPage">
-        <Nav id="topNavbar">
-          <img alt='Tutorverse Logo' src="tutor-verse/packages/client/public/logo.png"/>
-          <a href="http://localhost:3000/#/dashboard">Dashboard</a>
-        </Nav>
-      <div id="dashContent">
-        <div id="assignmentList">
-          Assignment List
-          <div className="assignment">
-            <div className="assignmentName">
-            Assignment 1 Name
-            </div>
-            <div className="assignmentGrade">
-            Grade
-            </div>
-            <div className="assignmentClass">
-            Class
-            </div>
-          </div>
-        <div className="assignment">
-            <div className="assignmentName">
-            Assignment 2 Name
-            </div>
-            <div className="assignmentGrade">
-            Grade
-            </div>
-            <div className="assignmentClass">
-            Class
-            </div>
-          </div>
-        <div className="assignment">
-            <div className="assignmentName">
-            Assignment 3 Name
-            </div>
-            <div className="assignmentGrade">
-            Grade
-            </div>
-            <div className="assignmentClass">
-            Class
-            </div>
-          </div>
-        </div>
-        <div id="details">
-          <div className="studentDetail">
-            Student Details
-          </div>
-          <div className="teacherDetail">
-            Teacher Details
-          </div>
-        </div>
-        <Card style={{ width: '18rem' }}>
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-            </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
-          </Card.Body>
-        </Card>
-      </div>
+        <Row id="dashContent">
+          <ListGroup id="assignmentList">
+            <h2>Assignment List</h2>
+            <ListGroup.Item className="assignment">
+              <Card>
+                <Card.Body>
+                  <Card.Title>Math Homework 1</Card.Title>
+                  <Card.Text>Grade: {user.grades}</Card.Text>
+                  <Card.Text>Class: {user.className}</Card.Text>
+                </Card.Body>
+              </Card>
+            </ListGroup.Item>
+            {/* <ListGroup.Item className="assignment">
+              <div className="assignmentName">
+              Assignment 2 Name
+              </div>
+              <div className="assignmentGrade">
+              Grade
+              </div>
+              <div className="assignmentClass">
+              Class
+              </div>
+            </ListGroup.Item>
+            <ListGroup.Item className="assignment">
+              <div className="assignmentName">
+              Assignment 3 Name
+              </div>
+              <div className="assignmentGrade">
+              Grade
+              </div>
+              <div className="assignmentClass">
+              Class
+              </div>
+            </ListGroup.Item> */}
+          </ListGroup>
+          <Col id="details">
+            { 
+              user.type === "student" &&
+              <StudentDetails student={user}/>
+            }
+            { 
+              user.type === "teacher" &&
+              <TeacherDetails teacher={user}/>
+            }
+          </Col>
+
+        </Row>
     </Container>
     </div>
   )
