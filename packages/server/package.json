@@ -9,6 +9,7 @@
     "start": "nodemon --exec babel-node ./index.js"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.17.2",
