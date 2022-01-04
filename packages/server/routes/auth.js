@@ -84,7 +84,7 @@ router.post('/signin', async (req, res) => {
 	// const token = jwt.sign(userForToken, keys.jwt.secret);
 	res
 		.status(200)
-		.send({ username, uid: user._id });
+		.send(user);
 });
 
 export default router;

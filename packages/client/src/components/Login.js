@@ -3,7 +3,7 @@ import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-export default function Login() {
+export default function Login({ setUser, setLoggedIn }) {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -11,8 +11,9 @@ export default function Login() {
 		e.preventDefault();
 		try {
 			const res = await axios.post('http://localhost:3001/auth/signin', { username, password });
-			console.log(res);
-      window.location.href = 'http://localhost:3000/#/dashboard';
+			setUser(res.data);
+			setLoggedIn(true);
+      // window.location.href = 'http://localhost:3000/#/';
 		} catch (error) {
 			console.error(error);
 			console.log('invalid');

@@ -12,6 +12,20 @@ code {
     monospace;
 }
 
+/* --------------------------- Navbar --------------------------- */
+
+.navbar img {
+  width: 2em;
+}
+
+.navbar .logout {
+  display: inline;
+}
+
+.navbar .logout:hover {
+  cursor: pointer;
+}
+
 /* ------------------------- Dashboard --------------------------- */
 
 .dashPage {
