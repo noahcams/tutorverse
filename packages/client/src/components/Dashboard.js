@@ -6,8 +6,8 @@ import { Container,
   ListGroup,
   Row,
   Col } from 'react-bootstrap'
-  import StudentDetails from '../StudentDetails/StudentDetails.js'
-  import TeacherDetails from '../TeacherDetails/TeacherDetails.js'
+  import StudentDetails from './StudentDetails.js'
+  import TeacherDetails from './TeacherDetails.js'
 
 export default function Dashboard(props) {
   const [user, setUser] = useState(props)
