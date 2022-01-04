@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export default function Login() {
 	const [username, setUsername] = useState('');
@@ -14,6 +15,8 @@ export default function Login() {
       window.location.href = 'http://localhost:3000/#/dashboard';
 		} catch (error) {
 			console.error(error);
+			console.log('invalid');
+			toast.error('Invalid username or password');
 		}
 	};
 
