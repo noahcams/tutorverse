@@ -7,24 +7,18 @@ import {
 } from 'react-bootstrap'
 import axios from 'axios'
 
-export default async function AssignmentDetails(props) {
-  // const [user, setUser] = useState(props)
+export default function AssignmentDetail(props) {
 
+  console.log(props)
   return (
-    <Container>
-      <ListGroup>
-        <ListGroup.Item className="assignment">
-          <Card>
-            <Card.Body>
-              <Card.Header>Math Homework 1</Card.Header>
-              <Card.Subtitle>{props.text}</Card.Subtitle>
-              
-              <Card.Text>Grade: {user.grades}</Card.Text>
-              <Card.Text>Class: {user.className}</Card.Text>
-            </Card.Body>
-          </Card>
-        </ListGroup.Item>
-      </ListGroup>
-    </Container>
+    <ListGroup.Item className="assignment">
+      <Card>
+        <Card.Body>
+          <Card.Header>{props.props.name}</Card.Header>
+          <a href='https://www.google.com'>Link</a>
+          <Card.Text>Directions: {props.props.text}</Card.Text>
+        </Card.Body>
+      </Card>
+    </ListGroup.Item>
   )
 }

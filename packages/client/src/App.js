@@ -7,15 +7,15 @@ import StudentDetails from './components/StudentDetails';
 import TeacherDetails from './components/TeacherDetails';
 import Navbar from './components/Navbar';
 import { HashRouter, Routes, Route } from 'react-router-dom';
-// import { ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
 function App() {
   return (
     <HashRouter className="App">
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <Navbar />
       <Routes>
         <Route exact path='/' element={<Login />} />

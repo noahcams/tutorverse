@@ -51,7 +51,7 @@ code {
 #assignmentList {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  max-width: 500px;
   border: royalblue 5px solid;
   border-radius: 25px;
   margin: 75px;
