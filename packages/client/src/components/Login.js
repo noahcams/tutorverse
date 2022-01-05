@@ -4,7 +4,7 @@ import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-export default function Login(props) {
+export default function Login({ setUser, setLoggedIn }) {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -14,8 +14,10 @@ export default function Login(props) {
 			const res = await axios.post('http://localhost:3001/auth/signin', { username, password });
 			setUser(res.data);
 			setLoggedIn(true);
-      		window.location.href = `http://localhost:3000/#/dashboard/${user.data._id}`;
-			// <Redirect to="/#/dashboard" />;
+      		// window.location.href = `http://localhost:3000/#/dashboard/${user.data._id}`;
+			// <Redirect to="/#/dashboard" />; 
+			// We don't need to redirect anymore because setting the loggedIn state to true
+			// redirects it for us. Also the dashboard path is now just '/'
 		} catch (error) {
 			console.error(error);
 			console.log('invalid');
