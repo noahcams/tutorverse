@@ -25,7 +25,7 @@ function App() {
       <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} user={user} />
       <Routes>
         <Route path='/' element={loggedIn ? <Dashboard user={user} /> : renderLogin()} />
-        <Route path='/class-list' element={loggedIn ? <ClassList /> : renderLogin()} />
+        <Route path='/class-list' element={loggedIn ? <ClassList user={user} /> : renderLogin()} />
         <Route path='/student-list' element={loggedIn ? <StudentList /> : renderLogin()} />
         <Route path='/student-details' element={loggedIn ? <StudentDetails /> : renderLogin()} />
         <Route path='/teacher-details' element={loggedIn ? <TeacherDetails /> : renderLogin()} />

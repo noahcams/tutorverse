@@ -23,7 +23,7 @@ export default function Dashboard({ user }) {
   let getDashboard = async (id) => {
     try {
       // const holder = await axios.get(`http://localhost:3001/users/${id}`)
-      const classes = await axios.get(`http://localhost:3001/classes/${user.data.classIds}`)
+      const classes = await axios.get(`http://localhost:3001/classes/${user.classIds}`)
       setCls(classes.data)
     } catch (err) {
       console.log(err)
