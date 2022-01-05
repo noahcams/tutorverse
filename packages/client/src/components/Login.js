@@ -14,10 +14,6 @@ export default function Login({ setUser, setLoggedIn }) {
 			const res = await axios.post('http://localhost:3001/auth/signin', { username, password });
 			setUser(res.data);
 			setLoggedIn(true);
-      		// window.location.href = `http://localhost:3000/#/dashboard/${user.data._id}`;
-			// <Redirect to="/#/dashboard" />; 
-			// We don't need to redirect anymore because setting the loggedIn state to true
-			// redirects it for us. Also the dashboard path is now just '/'
 		} catch (error) {
 			console.error(error);
 			console.log('invalid');
