@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+// import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-export default function Login({ setUser, setLoggedIn }) {
+export default function Login(props) {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -13,7 +14,8 @@ export default function Login({ setUser, setLoggedIn }) {
 			const res = await axios.post('http://localhost:3001/auth/signin', { username, password });
 			setUser(res.data);
 			setLoggedIn(true);
-      // window.location.href = 'http://localhost:3000/#/';
+      		window.location.href = `http://localhost:3000/#/dashboard/${user.data._id}`;
+			// <Redirect to="/#/dashboard" />;
 		} catch (error) {
 			console.error(error);
 			console.log('invalid');

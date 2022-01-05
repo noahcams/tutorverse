@@ -6,57 +6,50 @@ import { Container,
   ListGroup,
   Row,
   Col } from 'react-bootstrap'
-  import StudentDetails from './StudentDetails.js'
-  import TeacherDetails from './TeacherDetails.js'
+import { useParams } from 'react-router-dom'
+import StudentDetails from './StudentDetails.js'
+import TeacherDetails from './TeacherDetails.js'
+import AssignmentList from './AssignmentList.js'
+import axios from 'axios'
 
+
+  
 export default function Dashboard(props) {
-  const [user, setUser] = useState(props)
-  // get classId from student and use Id to get class and assignments
+  const [user, setUser] = useState({})
+  const [cls, setCls] = useState([])
+  
+  // get classId from URL
+  let { id } = useParams()
 
+  let getDashboard = async (id) => {
+    try {
+      const holder = await axios.get(`http://localhost:3001/users/${id}`)
+      const classes = await axios.get(`http://localhost:3001/classes/${holder.data.classId}`)
+      setUser(holder.data)
+      setCls(classes.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+    useEffect(() => {
+      getDashboard(id)
+  },[])
 
   
   return (
     <div>
       <Container className="dashPage">
         <Row id="dashContent">
-          <ListGroup id="assignmentList">
+          {user.type === 'student' &&
+            <ListGroup id="assignmentList">
             <h2>Assignment List</h2>
-            <ListGroup.Item className="assignment">
-              <Card>
-                <Card.Body>
-                  <Card.Title>Math Homework 1</Card.Title>
-                  <Card.Text>Grade: {user.grades}</Card.Text>
-                  <Card.Text>Class: {user.className}</Card.Text>
-                </Card.Body>
-              </Card>
-            </ListGroup.Item>
-            {/* <ListGroup.Item className="assignment">
-              <div className="assignmentName">
-              Assignment 2 Name
-              </div>
-              <div className="assignmentGrade">
-              Grade
-              </div>
-              <div className="assignmentClass">
-              Class
-              </div>
-            </ListGroup.Item>
-            <ListGroup.Item className="assignment">
-              <div className="assignmentName">
-              Assignment 3 Name
-              </div>
-              <div className="assignmentGrade">
-              Grade
-              </div>
-              <div className="assignmentClass">
-              Class
-              </div>
-            </ListGroup.Item> */}
-          </ListGroup>
+            <AssignmentList props={cls} />
+            </ListGroup> 
+          }
           <Col id="details">
             { 
               user.type === "student" &&
-              <StudentDetails student={user}/>
+              <h2>Student Details</h2>
             }
             { 
               user.type === "teacher" &&
