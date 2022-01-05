@@ -22,10 +22,10 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	classId: {
+	classIds: [{
 		type: ObjectId,
 		ref: 'Class',
-	},
+	}],
 	grades: [
 		{
 			type: Number,

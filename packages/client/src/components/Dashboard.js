@@ -14,8 +14,7 @@ import axios from 'axios'
 
 
   
-export default function Dashboard(props) {
-  const [user, setUser] = useState({})
+export default function Dashboard({ user }) {
   const [cls, setCls] = useState([])
   
   // get classId from URL
@@ -23,9 +22,8 @@ export default function Dashboard(props) {
 
   let getDashboard = async (id) => {
     try {
-      const holder = await axios.get(`http://localhost:3001/users/${id}`)
-      const classes = await axios.get(`http://localhost:3001/classes/${holder.data.classId}`)
-      setUser(holder.data)
+      // const holder = await axios.get(`http://localhost:3001/users/${id}`)
+      const classes = await axios.get(`http://localhost:3001/classes/${user.data.classIds}`)
       setCls(classes.data)
     } catch (err) {
       console.log(err)

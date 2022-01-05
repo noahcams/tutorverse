@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import AssignmentDetail from './AssignmentDetails.js'
 
-export default function AssignmentList(cls) {
+export default function AssignmentList({ cls }) {
   const [assignments,setAssignmnents] = useState([])
   const [keys,setKeys] = useState(cls.props.assignments)
   
