@@ -9,14 +9,16 @@ import axios from 'axios'
 
 export default function AssignmentDetail(props) {
 
+  let assignment = props.props
+
   console.log(props)
   return (
     <ListGroup.Item className="assignment">
       <Card>
         <Card.Body>
-          <Card.Header>{props.props.name}</Card.Header>
-          <a href='https://www.google.com'>Link</a>
-          <Card.Text>Directions: {props.props.text}</Card.Text>
+          <Card.Header>{assignment.name}</Card.Header>
+          <a href={assignment.link}>Link</a>
+          <Card.Text>Directions: {assignment.text}</Card.Text>
         </Card.Body>
       </Card>
     </ListGroup.Item>
