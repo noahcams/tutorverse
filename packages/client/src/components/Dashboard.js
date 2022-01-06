@@ -17,7 +17,7 @@ export default function Dashboard({ user }) {
   let { id } = useParams()
   let getDashboard = async (id) => {
     try {
-      const classes = await axios.get(`http://localhost:3001/classes/${user.classId}`)
+      const classes = await axios.get(`http://localhost:3001/classes/${user.classIds}`)
       setCls(classes.data)
       if(user.type === "teacher"){
         const students = await axios.get(`http://localhost:3001/users/${cls.students}`)
