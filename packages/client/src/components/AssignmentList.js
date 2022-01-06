@@ -4,7 +4,7 @@ import AssignmentDetail from './AssignmentDetails.js'
 
 export default function AssignmentList({ cls }) {
   const [assignments,setAssignmnents] = useState([])
-  const [keys,setKeys] = useState(cls.props.assignments)
+  const [keys,setKeys] = useState({})
   
   let getAssignments = async () => {
     const fetched = await axios.get(`http://localhost:3001/assignments/`,{
