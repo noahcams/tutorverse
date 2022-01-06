@@ -28,10 +28,18 @@ const userSchema = new mongoose.Schema({
 	}],
 	grades: [
 		{
-			type: Number,
-			required: true,
+			grade: {
+				type: Number,
+				required: true,
+			},
+			assignment: {
+				type: ObjectId,
+				ref: 'Assignment',
+				required: true,
+			}
 		},
 	],
+
 	type: {
 		type: String,
 		required: true,
