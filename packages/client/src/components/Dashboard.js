@@ -10,11 +10,6 @@ import TeacherDetails from './TeacherDetails.js'
 import AssignmentList from './AssignmentList.js'
 import axios from 'axios'
 
-<<<<<<< HEAD
-
-  
-=======
->>>>>>> 98549cc (teacher login/dashboard progress; student details with class)
 export default function Dashboard({ user }) {
   const [cls, setCls] = useState([])
   
@@ -22,12 +17,7 @@ export default function Dashboard({ user }) {
   let { id } = useParams()
   let getDashboard = async (id) => {
     try {
-<<<<<<< HEAD
-      // const holder = await axios.get(`http://localhost:3001/users/${id}`)
-      const classes = await axios.get(`http://localhost:3001/classes/${user.classIds}`)
-=======
       const classes = await axios.get(`http://localhost:3001/classes/${user.classId}`)
->>>>>>> 98549cc (teacher login/dashboard progress; student details with class)
       setCls(classes.data)
       if(user.type === "teacher"){
         const students = await axios.get(`http://localhost:3001/users/${cls.students}`)
