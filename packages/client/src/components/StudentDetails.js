@@ -16,7 +16,7 @@ export default function StudentDetails({ user }) {
 
   function calculateAverage(grades) {
     let average = 0
-    grades.forEach(g => average += g)
+    grades.forEach(g => average += g.grade)
     return average / grades.length
   }
 
@@ -38,6 +38,7 @@ export default function StudentDetails({ user }) {
   },[])
 
   console.log(cls.assignments)
+  console.log(user.grades)
   return (
     <div>
       <Container className="dashpage">
