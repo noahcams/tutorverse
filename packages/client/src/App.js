@@ -27,7 +27,7 @@ function App() {
         <Route path='/' element={loggedIn ? <Dashboard user={user} /> : renderLogin()} />
         <Route path='/class-list' element={loggedIn ? <ClassList user={user} /> : renderLogin()} />
         <Route path='/student-list' element={loggedIn ? <StudentList /> : renderLogin()} />
-        <Route path='/student-details' element={loggedIn ? <StudentDetails /> : renderLogin()} />
+        <Route path='/student-details' element={loggedIn ? <StudentDetails user={user} /> : renderLogin()} />
         <Route path='/teacher-details' element={loggedIn ? <TeacherDetails /> : renderLogin()} />
       </Routes>
     </HashRouter>

@@ -10,7 +10,6 @@ export default function AssignmentList({ cls }) {
     const fetched = await axios.get(`http://localhost:3001/assignments/`,{
     params: keys
     })
-    console.log(fetched.data)
     setAssignmnents(fetched.data)
   }
 
@@ -22,7 +21,7 @@ export default function AssignmentList({ cls }) {
       <div>
         {
           assignments.map((assignment) => {
-           return <AssignmentDetail props={assignment} key={assignment._id} />
+            return <AssignmentDetail props={assignment} key={assignment._id} />
           })
         }
       </div>

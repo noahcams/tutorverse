@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Container,
-  Nav,
-  Card,
   Button,
   ListGroup,
   Row,
@@ -12,49 +10,61 @@ import TeacherDetails from './TeacherDetails.js'
 import AssignmentList from './AssignmentList.js'
 import axios from 'axios'
 
+<<<<<<< HEAD
 
   
+=======
+>>>>>>> 98549cc (teacher login/dashboard progress; student details with class)
 export default function Dashboard({ user }) {
   const [cls, setCls] = useState([])
   
   // get classId from URL
   let { id } = useParams()
-
   let getDashboard = async (id) => {
     try {
+<<<<<<< HEAD
       // const holder = await axios.get(`http://localhost:3001/users/${id}`)
       const classes = await axios.get(`http://localhost:3001/classes/${user.classIds}`)
+=======
+      const classes = await axios.get(`http://localhost:3001/classes/${user.classId}`)
+>>>>>>> 98549cc (teacher login/dashboard progress; student details with class)
       setCls(classes.data)
+      if(user.type === "teacher"){
+        const students = await axios.get(`http://localhost:3001/users/${cls.students}`)
+        console.log (students)
+      }
     } catch (err) {
       console.log(err)
     }
   }
-    useEffect(() => {
+  
+  useEffect(() => {
       getDashboard(id)
   },[])
+
+  console.log(user)
+  console.log(cls.students)
 
   
   return (
     <div>
       <Container className="dashPage">
         <Row id="dashContent">
-          {user.type === 'student' &&
+
+          {
+          user.type === 'student' &&
             <ListGroup id="assignmentList">
             <h2>Assignment List</h2>
             <AssignmentList props={cls} />
             </ListGroup> 
           }
-          <Col id="details">
-            { 
-              user.type === "student" &&
-              <h2>Student Details</h2>
-            }
-            { 
-              user.type === "teacher" &&
-              <TeacherDetails teacher={user}/>
-            }
-          </Col>
 
+          {
+          user.type === 'teacher' &&
+            <ListGroup id='studentList'>
+              <ListGroup.Item>Hello</ListGroup.Item>
+            </ListGroup>
+          }
         </Row>
     </Container>
     </div>
