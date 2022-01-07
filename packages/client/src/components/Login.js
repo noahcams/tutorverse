@@ -18,36 +18,40 @@ export default function Login() {
 	};
 
 	return (
-		<Container className="login">
-			<h1>Tutorverse</h1>
-			<h5>Where Learning Transpires!</h5>
-			<Row>
-				<Col className="first" md={{ span: 4, offset: 4 }}>
-					<Form onSubmit={handleLogin}>
-						<Form.Group className="username" controlId="formLogInUsername">
-							<Form.Label>Username</Form.Label>
-							<Form.Control
-								type="text"
-								placeholder="Username..."
-								value={username}
-								onChange={(e) => setUsername(e.target.value)}
-							/>
-						</Form.Group>
-						<Form.Group className="user-password" controlId="formLogInPassword">
-							<Form.Label>Password</Form.Label>
-							<Form.Control
-								type="password"
-								placeholder="Password..."
-								value={password}
-								onChange={(e) => setPassword(e.target.value)}
-							/>
-						</Form.Group>
-						<Button variant="primary" type="submit">
-							Log In
-						</Button>
-					</Form>
-				</Col>
-			</Row>
-		</Container>
+		<div id="loginPage">
+			<div className="loginBox">
+				<Container className="login">
+					<h1>Tutorverse</h1>
+					<h5>Where Learning Transpires!</h5>
+					<Row>
+						<Col className="first" md={{ span: 4, offset: 4 }}>
+							<Form onSubmit={handleLogin}>
+								<Form.Group className="username" controlId="formLogInUsername">
+									<Form.Label>Username</Form.Label>
+									<Form.Control
+										type="text"
+										placeholder="Username..."
+										value={username}
+										onChange={(e) => setUsername(e.target.value)}
+									/>
+								</Form.Group>
+								<Form.Group className="user-password" controlId="formLogInPassword">
+									<Form.Label>Password</Form.Label>
+									<Form.Control
+										type="password"
+										placeholder="Password..."
+										value={password}
+										onChange={(e) => setPassword(e.target.value)}
+									/>
+								</Form.Group>
+								<Button variant="primary" type="submit">
+									Log In
+								</Button>
+							</Form>
+						</Col>
+					</Row>
+				</Container>
+			</div>
+		</div>
 	);
 }
