@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ClassDetails from './ClassDetails';
 import Class from './ClassDetails';
 
 export default function ClassList({ user }) {
+  const [classes, setClasses] = useState([]);
 
   const { classIds } = user;
 
   const getClasses = async (classId) => {
     try {
       const cls = await axios.get(`http://localhost:3001/classes/${classId}`);
-      console.log(cls);
+      setClasses((classes) => [...classes, cls.data]);
     } catch(err) {
       console.error(err);
     }
@@ -20,9 +21,11 @@ export default function ClassList({ user }) {
     classIds.forEach(classId => getClasses(classId));
   }, []);
 
+  console.log(classes);
+
   return (
-    <div>
-      <ClassDetails />
+    <div className="classes">
+      {classes.map((cls) => <ClassDetails cls={cls} />)}
     </div>
   )
 }
