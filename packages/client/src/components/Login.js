@@ -14,9 +14,8 @@ export default function Login({ setUser, setLoggedIn}) {
 			setUser(res.data)
 			setLoggedIn(true)
 		} catch (error) {
-			console.error(error);
-			console.log(username, password);
 			toast.error('Invalid username or password');
+			toast.error(error);
 		}
 	};
 

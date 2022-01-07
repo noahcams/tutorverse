@@ -156,3 +156,12 @@ code {
 .login button {
   margin-top: 1em;
 }
+
+/* -------------------------- Classes ------------------------------ */
+
+.classes {
+  display: flex;
+  justify-content: center;
+  flex-basis: 25em;
+  margin-top: 5em;
+}
