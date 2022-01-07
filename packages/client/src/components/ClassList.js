@@ -25,7 +25,7 @@ export default function ClassList({ user }) {
 
   return (
     <div className="classes">
-      {classes.map((cls) => <ClassDetails cls={cls} />)}
+      {classes.map((cls, i) => <ClassDetails cls={cls} key={i} />)}
     </div>
   )
 }

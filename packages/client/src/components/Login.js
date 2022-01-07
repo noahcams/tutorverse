@@ -14,6 +14,7 @@ export default function Login({ setUser, setLoggedIn}) {
 			setUser(res.data)
 			setLoggedIn(true)
 		} catch (error) {
+			toast.error('Invalid username or password');
 			toast.error(error);
 		}
 	};

@@ -45,7 +45,7 @@ export default function Dashboard({ user }) {
 					{user.type === 'student' && (
 						<ListGroup id="assignmentList">
 							<h2>Assignment List</h2>
-							{cls.map((cl) => <AssignmentList props={cl} />)}
+							{cls.map((cl, i) => <AssignmentList props={cl} key={i} />)}
 						</ListGroup>
 					)}
 

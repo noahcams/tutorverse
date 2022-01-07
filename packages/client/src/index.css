@@ -163,4 +163,5 @@ code {
   display: flex;
   justify-content: center;
   flex-basis: 25em;
+  margin-top: 5em;
 }

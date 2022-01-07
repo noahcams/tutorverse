@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/signup', async (req, res) => {
-	const { username, email, password, type, grades, classId, firstName, lastName } = req.body;
+	const { username, email, password, type, grades, classIds, firstName, lastName } = req.body;
 
 	if (!password || !username || !email) {
 		return res.status(422).json({ error: 'Please fill out all fields and make sure they are correct' });
@@ -40,7 +40,7 @@ router.post('/signup', async (req, res) => {
 					passwordHash: hashedpassword,
 					type,
 					grades,
-					classId,
+					classIds,
 					firstName,
 					lastName
 				});
