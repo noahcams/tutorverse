@@ -14,6 +14,7 @@ export default function Dashboard({ user }) {
   const [cls, setCls] = useState([])
   
   // get classId from URL
+  // This was throwing an error for me. I think the issue is user.classIds is an array. -Noah
   let { id } = useParams()
   let getDashboard = async (id) => {
     try {
@@ -24,16 +25,16 @@ export default function Dashboard({ user }) {
         console.log (students)
       }
     } catch (err) {
-      console.log(err)
+      console.error(err)
     }
   }
   
   useEffect(() => {
-      getDashboard(id)
+    getDashboard(id)
   },[])
 
-  console.log(user)
-  console.log(cls.students)
+  // console.log(user)
+  // console.log(cls.students)
 
   
   return (
