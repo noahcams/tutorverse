@@ -14,15 +14,12 @@ export default function Dashboard({ user }) {
   const [cls, setCls] = useState([])
   
   // get classId from URL
-  let { id } = useParams()
   let getDashboard = async (user) => {
     try {
       const classes = await axios.get(`http://localhost:3001/classes/${user.classIds}`)
-      console.log(classes)
       setCls(classes.data)
       if(user.type === "teacher"){
         const students = await axios.get(`http://localhost:3001/users/${cls.students}`)
-        console.log (students)
       }
     } catch (err) {
       console.log(err)
@@ -32,10 +29,6 @@ export default function Dashboard({ user }) {
   useEffect(() => {
       getDashboard(user)
   },[])
-
-  console.log(user)
-  console.log(cls.students)
-
   
   return (
     <div>

@@ -35,10 +35,8 @@ export default function StudentDetails({ user }) {
 
   useEffect(() => {
     getDetails(user._id)
-    console.log(user)
   },[])
 
-  console.log(cls.assignments)
   return (
     <div>
       <Container className="dashpage">
@@ -51,6 +49,9 @@ export default function StudentDetails({ user }) {
                 <Card.Text>Overall Grade: {calculateAverage(user.grades)}</Card.Text>
               </Card.Body>
             </Card>
+          </Col>
+          <Col>
+            <TeacherDetails teacher={teacher} />
           </Col>
         </Row>      
       </Container>

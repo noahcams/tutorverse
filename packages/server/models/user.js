@@ -32,12 +32,10 @@ const userSchema = new mongoose.Schema({
 		{
 			grade :{
 				type: Number,
-				required: true,
 			},
 			assignment: {
 				type: ObjectId,
 				ref: 'Assignment',
-				required: true,
 			}
 		}
 	],
