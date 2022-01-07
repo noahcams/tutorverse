@@ -15,9 +15,10 @@ export default function Dashboard({ user }) {
   
   // get classId from URL
   let { id } = useParams()
-  let getDashboard = async (id) => {
+  let getDashboard = async (user) => {
     try {
       const classes = await axios.get(`http://localhost:3001/classes/${user.classIds}`)
+      console.log(classes)
       setCls(classes.data)
       if(user.type === "teacher"){
         const students = await axios.get(`http://localhost:3001/users/${cls.students}`)
@@ -29,7 +30,7 @@ export default function Dashboard({ user }) {
   }
   
   useEffect(() => {
-      getDashboard(id)
+      getDashboard(user)
   },[])
 
   console.log(user)

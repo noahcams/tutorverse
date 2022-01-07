@@ -16,13 +16,13 @@ export default function StudentDetails({ user }) {
 
   function calculateAverage(grades) {
     let average = 0
-    grades.forEach(g => average += g)
+    grades.forEach(g => average += g.grade)
     return average / grades.length
   }
 
   let getDetails = async (id) => {
     try {
-      const classes = await axios.get(`http://localhost:3001/classes/${user.classId}`)
+      const classes = await axios.get(`http://localhost:3001/classes/${user.classIds}`)
       setCls(classes.data)
       const teach = await axios.get(`http://localhost:3001/users/${classes.data.teacher}`)
       setTeacher(teach.data)
@@ -31,10 +31,11 @@ export default function StudentDetails({ user }) {
     }
   }
 
-  let handleTeacherDetails = async (teacher) => <TeacherDetails teacher={teacher} />
+  let handleTeacherDetails = (teacher) => <TeacherDetails teacher={teacher} />
 
   useEffect(() => {
     getDetails(user._id)
+    console.log(user)
   },[])
 
   console.log(cls.assignments)
@@ -45,7 +46,7 @@ export default function StudentDetails({ user }) {
           <Col>
             <Card>
               <Card.Body>
-                <Card.Header onClick='() => '>Classes: {cls.name}</Card.Header>
+                <Card.Header onClick={() => {}}>Classes: {cls.name}</Card.Header>
                 <Card.Subtitle>Teacher: {teacher.username}</Card.Subtitle>
                 <Card.Text>Overall Grade: {calculateAverage(user.grades)}</Card.Text>
               </Card.Body>
