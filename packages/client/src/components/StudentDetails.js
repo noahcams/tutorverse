@@ -22,7 +22,7 @@ export default function StudentDetails({ user }) {
 
   let getDetails = async (id) => {
     try {
-      const classes = await axios.get(`http://localhost:3001/classes/${user.classId}`)
+      const classes = await axios.get(`http://localhost:3001/classes/${user.classIds}`)
       setCls(classes.data)
       const teach = await axios.get(`http://localhost:3001/users/${classes.data.teacher}`)
       setTeacher(teach.data)

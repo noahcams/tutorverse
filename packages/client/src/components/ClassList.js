@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
+import ClassDetails from './ClassDetails';
+import Class from './ClassDetails';
 
 export default function ClassList({ user }) {
 
   const { classIds } = user;
-  console.log(classIds);
 
   const getClasses = async (classId) => {
     try {
@@ -16,12 +17,12 @@ export default function ClassList({ user }) {
   }
   
   useEffect(() => {
-    classIds.forEach(classId => getClasses(classId))
+    classIds.forEach(classId => getClasses(classId));
   }, []);
 
   return (
     <div>
-      
+      <ClassDetails />
     </div>
   )
 }
