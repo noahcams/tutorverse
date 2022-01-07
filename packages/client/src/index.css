@@ -155,13 +155,25 @@ code {
 
 .login button {
   margin-top: 1em;
+  margin-bottom: 1em;
+  background-color: skyblue;
+  color: black;
+  border: royalblue 3px solid;
+  border-radius: 25px;
 }
 
-/* -------------------------- Classes ------------------------------ */
+.loginBox {
+  background-color: palegoldenrod;
+  width: 50%;
+  border: royalblue 3px solid;
+  border-radius: 12px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-.classes {
-  display: flex;
-  justify-content: center;
-  flex-basis: 25em;
-  margin-top: 5em;
+#loginPage {
+  background-color: skyblue;
+  width: 100%;
+  height: 100vh;
+  padding-top: 3em;
 }
