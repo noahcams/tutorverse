@@ -146,6 +146,11 @@ code {
   height: 40%;
 }
 
+/* #teacherDash {
+  display: flex;
+  justify-content: space-evenly;
+} */
+
 /* ------------------------- Login -------------------------- */
 
 .login {

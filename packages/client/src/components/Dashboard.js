@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Button, ListGroup, Row, Col } from 'react-bootstrap';
+import { Container, Button, ListGroup, Row, Col, Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import StudentDetails from './StudentDetails.js';
 import TeacherDetails from './TeacherDetails.js';
@@ -41,19 +41,32 @@ export default function Dashboard({ user }) {
 	return (
 		<div>
 			<Container className="dashPage">
-				<Row id="dashContent">
+				<Row id="teacherDash">
 					{user.type === 'student' && (
-						<ListGroup id="assignmentList">
-							<h2>Assignment List</h2>
-							{cls.map((cl, i) => <AssignmentList props={cl} key={i} />)}
-						</ListGroup>
+						<Col>
+							<ListGroup id="assignmentList">
+								<h2>Assignment List</h2>
+								{cls.map((cl, i) => <AssignmentList props={cl} key={i} />)}
+							</ListGroup>
+						</Col>
 					)}
 
 					{user.type === 'teacher' && (
-						<ListGroup id="studentList">
-							<ListGroup.Item>Hello</ListGroup.Item>
-						</ListGroup>
+					<Col>
+						<Card>
+							<Card.Body>
+								<Card.Header>Classes</Card.Header>
+							</Card.Body>
+						</Card>
+					</Col>
 					)}
+					<Col>
+						<Card>
+							<Card.Body>
+								<Card.Header>Assignments</Card.Header>
+							</Card.Body>
+						</Card>
+					</Col>
 				</Row>
 			</Container>
 		</div>
