@@ -10,6 +10,12 @@ router
         res.send(assignments);
         // console.log(assignments)
     })
+    .get('/:id', async (req, res) => {
+        const id = req.params.id
+        const assignment = await Assignment.findOne( { _id: id} )
+        if (!assignment) throw new Error('Assignment not found')
+        res.send(assignment)
+    })
     .post('/',async (req, res) => {
         try{
             const newAssignment = new Assignment(req.body)
