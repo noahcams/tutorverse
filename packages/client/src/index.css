@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: skyblue !important;
 }
 
 code {
@@ -30,11 +31,9 @@ code {
 
 .dashPage {
   display: flex;
-  flex-direction: column;
-  background-color: skyblue;
+  justify-content: center;
   height: 100vh;
   width: 100%;
-  align-items: center;
 }
 
 #topNavbar {
@@ -137,6 +136,9 @@ code {
   height: 60%;
 }
 
+/* ------------------------- Teacher Dashboard -------------------------- */
+
+
 .teacherDetail {
   display: flex;
   flex-direction: column;
@@ -146,10 +148,22 @@ code {
   height: 40%;
 }
 
-/* #teacherDash {
+.teacher-classes, .teacher-assignments {
   display: flex;
-  justify-content: space-evenly;
-} */
+  align-items: center;
+  width: 25rem;
+}
+
+.class {
+  width: 14rem;
+}
+
+.heading {
+  text-align: center;
+  padding: 20px;
+  font-size: 40px;
+  background-color: rgb(224, 224, 224);
+}
 
 /* ------------------------- Login -------------------------- */
 
@@ -190,4 +204,13 @@ code {
   justify-content: center;
   flex-basis: 25em;
   margin-top: 5em;
+}
+
+/* -------------------------- Create Class/Assignment Forms ------------------------------ */
+
+
+
+#create-assignment {
+  display: flex;
+  flex-direction: column;
 }
