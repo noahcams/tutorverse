@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, ListGroup, Row, Col, Card, Modal, Form } from 'react-bootstrap';
-import StudentDetails from './StudentDetails.js';
-import TeacherDetails from './TeacherDetails.js';
+import { Navigate } from 'react-router-dom'
 import AssignmentList from './AssignmentList.js';
+import ClassList from './ClassList.js';
 import axios from 'axios';
 
 export default function Dashboard({ user }) {
@@ -29,15 +29,19 @@ export default function Dashboard({ user }) {
 		}
 	};
 
-	let toggleAddClass = async () => {
+	const handleInputChange = (event) => {
+		setForm(event.target.value)
+	}
+
+	const toggleAddClass = async () => {
 		setClsShow(!clsShow)
 	}
 
-	let toggleAddAssignment = async () => {
+	const toggleAddAssignment = async () => {
 		setAssignmentShow(!assignmentShow)
 	}
 
-	let addClass = async (e) => {
+	const addClass = async (e) => {
 		e.preventDefault();
 		console.log(form)
 
@@ -47,20 +51,23 @@ export default function Dashboard({ user }) {
 		})
 	}
 
-	const handleInputChange = (event) => {
-		setForm(event.target.value)
-	}
-
-	let addAssignment = async (e) => {
+	const addAssignment = async (e) => {
 		e.preventDefault();
 		console.log(e.target.value)
 
 	}
 
+	const log = () => {
+		<Navigate
+			to={{
+				pathname: '/class-list',
+				state: {user: user}
+			}}
+		/>
+	}
+
 	useEffect(() => {
 		getDashboard();
-		console.log(user)
-		console.log(cls)
 	}, []);
 
 	return (
@@ -111,7 +118,7 @@ export default function Dashboard({ user }) {
 										cls.map((c) => {
 											return (
 												<ListGroup.Item className='class' key={c._id}>
-													<h4>Class: {c.name}</h4>
+													<h4 onClick={log}>Class: {c.name}</h4>
 													<Card.Text>Students: {c.students.length}</Card.Text>
 													<Card.Text>Assignments: {c.assignments.length}</Card.Text>
 												</ListGroup.Item>
