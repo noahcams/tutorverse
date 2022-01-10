@@ -169,7 +169,7 @@ export default function Dashboard({ user }) {
 									{
 										cls.map(c=>{
 											return (
-												<AssignmentList props={c}/>
+												<AssignmentList props={c} key={c._id} />
 											)
 										})
 									}
