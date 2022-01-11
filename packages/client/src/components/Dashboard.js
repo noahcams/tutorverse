@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, ListGroup, Row, Col, Card, Modal, Form } from 'react-bootstrap';
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import AssignmentList from './AssignmentList.js';
 import ClassList from './ClassList.js';
 import axios from 'axios';
@@ -8,7 +8,6 @@ import axios from 'axios';
 export default function Dashboard({ user }) {
 	const [cls, setCls] = useState([]);
 	const [keys, setKeys] = useState(user.classIds);
-	const [assignments, setAssignments] = useState([]);
 	const [clsShow, setClsShow] = useState(false);
 	const [assignmentShow, setAssignmentShow] = useState(false);
 	const [form, setForm] = useState('');
@@ -19,11 +18,7 @@ export default function Dashboard({ user }) {
 			const classes = await axios.get(`http://localhost:3001/classes/`,{
 				params: keys
 			})
-			const fetched = await axios.get(`http://localhost:3001/assignments/`,{
-				params: keys
-			})
 			setCls(classes.data)
-			setAssignments(fetched.data)
 		} catch (err) {
 			console.error(err);
 		}
@@ -45,10 +40,12 @@ export default function Dashboard({ user }) {
 		e.preventDefault();
 		console.log(form)
 
-		axios.post('http://localhost:3001/classes/', {
+		await axios.post('http://localhost:3001/classes/', {
 			name: form,
 			teacher: user._id, 
 		})
+
+		await axios.patch(`http://localhost:3001/users/${user._id}`)
 	}
 
 	const addAssignment = async (e) => {
@@ -56,20 +53,16 @@ export default function Dashboard({ user }) {
 		console.log(e.target.value)
 
 	}
+	const navigate = useNavigate();
 
 	const log = () => {
-		<Navigate
-			to={{
-				pathname: '/class-list',
-				state: {user: user}
-			}}
-		/>
+		navigate('/class-list')
 	}
 
 	useEffect(() => {
 		getDashboard();
 	}, []);
-
+	
 	return (
 		<div>
 			<Container className="dashPage">
@@ -118,7 +111,7 @@ export default function Dashboard({ user }) {
 										cls.map((c) => {
 											return (
 												<ListGroup.Item className='class' key={c._id}>
-													<h4 onClick={log}>Class: {c.name}</h4>
+													<h4 onClick={log} className='name'>Class: {c.name}</h4>
 													<Card.Text>Students: {c.students.length}</Card.Text>
 													<Card.Text>Assignments: {c.assignments.length}</Card.Text>
 												</ListGroup.Item>
@@ -174,10 +167,8 @@ export default function Dashboard({ user }) {
 							</Modal>
 							<Card.Body className='teacher-assignments'>
 									{
-										cls.map(c=>{
-											return (
-												<AssignmentList props={c} key={c._id} />
-											)
+										cls.map((c,i)=>{
+											return <AssignmentList cls={c} key={i}/>
 										})
 									}
 							</Card.Body>

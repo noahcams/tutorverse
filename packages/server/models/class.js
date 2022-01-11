@@ -5,6 +5,7 @@ const classSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        unique: true,
     },
     teacher : {
         type: ObjectId,
