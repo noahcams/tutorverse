@@ -3,11 +3,16 @@ import axios from 'axios';
 import { Card } from 'react-bootstrap';
 
 export default function Class({ cls }) {
-  const [teacher, setTeacher] = useState('');
+  const [assignments, setAssignments] = useState(cls.assignments)
+  const [students, setStudents] = useState(cls.students)
 
-  useEffect(async function getTeacher() {
+  const getClassDetail= async() => {
     const teacher = await (await axios.get(`http://localhost:3001/users/${cls.teacher}`)).data;
-    setTeacher(teacher.firstName + ' ' + teacher.lastName);
+    console.log(teacher);
+  }
+
+  useEffect(() => {
+    console.log(cls)
   }, []);
 
   return (
@@ -15,7 +20,7 @@ export default function Class({ cls }) {
       <Card.Header className='name'>
         {cls.name}
       </Card.Header>
-      <Card.Body>Teacher: {teacher}</Card.Body>
+      {/* <Card.Body>Teacher: {cls.teacher}</Card.Body> */}
     </Card>
   )
 }

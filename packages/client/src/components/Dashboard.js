@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, ListGroup, Row, Col, Card, Modal, Form } from 'react-bootstrap';
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import AssignmentList from './AssignmentList.js';
 import ClassList from './ClassList.js';
 import axios from 'axios';
@@ -53,10 +53,10 @@ export default function Dashboard({ user }) {
 		console.log(e.target.value)
 
 	}
-	const navigate = useNavigate();
 
 	const log = () => {
-		navigate('/class-list')
+
+		return <Link to='/class-detail' />
 	}
 
 	useEffect(() => {
@@ -111,7 +111,8 @@ export default function Dashboard({ user }) {
 										cls.map((c) => {
 											return (
 												<ListGroup.Item className='class' key={c._id}>
-													<h4 onClick={log} className='name'>Class: {c.name}</h4>
+													{console.log(c)}
+													<Link to='/class-detail' cls={c} key={c._id}>Class: {c.name}</Link>
 													<Card.Text>Students: {c.students.length}</Card.Text>
 													<Card.Text>Assignments: {c.assignments.length}</Card.Text>
 												</ListGroup.Item>

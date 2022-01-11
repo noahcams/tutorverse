@@ -15,11 +15,8 @@ export default function Navbar({ loggedIn, setLoggedIn, user }) {
 							<Link to="/class-list" className="navbar-brand">
 								Classes
 							</Link>
-							<Link to="/" className="navbar-brand">
-								Dashboard
-							</Link>
-							<Link to="/student-details" className="navbar-brand">
-								{user.username ? user.username : ''}
+							<Link to="/assignment-list" className="navbar-brand">
+								Assignments
 							</Link>
 							<div className="navbar-brand logout" onClick={() => setLoggedIn(false)}>
 								Log out
