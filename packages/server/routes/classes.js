@@ -14,14 +14,22 @@ router
 
         res.send(classData)
     })
-    .post('/',async (req, res) => {
-        try{
+    .post('/', async (req, res) => {
+        try {
             const newClass = await new Class(req.body)
             newClass.save()
     
             res.json(newClass)
-        } catch (err){
+        } catch (err) {
             res.status(500).send("Error creating new class.")
+        }
+    })
+    .put('/', async (req, res) => {
+        try {
+            const cls = await Class.findOneAndUpdate({ name: req.body.name }, req.body);
+            res.send(cls);
+        } catch (err) {
+            res.status(500).send('Error updating class');
         }
     })
 
