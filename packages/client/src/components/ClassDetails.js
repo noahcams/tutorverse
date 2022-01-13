@@ -1,26 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Card } from 'react-bootstrap';
+import { useParams } from "react-router"
+import { Card, ListGroup } from 'react-bootstrap';
+import AssignmentList from './AssignmentList';
+import StudentDetails from './StudentDetails';
 
-export default function Class({ cls }) {
-  const [assignments, setAssignments] = useState(cls.assignments)
-  const [students, setStudents] = useState(cls.students)
-
+export default function ClassDetails({ c, user }) {
+  const [cls, setCls] = useState({})
+  const [students, setStudents] = useState([])
+  const params = useParams()
+  
   const getClassDetail= async() => {
-    const teacher = await (await axios.get(`http://localhost:3001/users/${cls.teacher}`)).data;
-    console.log(teacher);
+    try {
+      if (!c) {
+        const clas = await axios.get(`http://localhost:3001/classes/${params.id}`)
+        setCls(clas.data)
+        const studentList = await axios.get(`http://localhost:3001/users/`,{
+          params: clas.data.students
+        })
+        setStudents(studentList.data.filter(student => student.type === 'student'))
+        // setStudents(students.filter(student => student.classIds.includes(params.id)))
+      } else {
+        setCls(c)
+      }
+		} catch (err) {
+      console.error(err);
+		}
   }
 
   useEffect(() => {
-    console.log(cls)
-  }, []);
-
+      getClassDetail()
+    }, []);
+  
   return (
     <Card>
       <Card.Header className='name'>
         {cls.name}
       </Card.Header>
-      {/* <Card.Body>Teacher: {cls.teacher}</Card.Body> */}
+      <Card.Body>
+      <ListGroup>
+        { (!c || user.type === 'teacher') &&
+          students.map(s => {
+            return (
+              
+              <StudentDetails user={s} key={s._id}/>
+            )
+          })
+        }
+      </ListGroup>
+      </Card.Body>
     </Card>
   )
 }

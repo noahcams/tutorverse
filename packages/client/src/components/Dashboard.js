@@ -3,6 +3,7 @@ import { Container, Button, ListGroup, Row, Col, Card, Modal, Form } from 'react
 import { Link } from 'react-router-dom'
 import AssignmentList from './AssignmentList.js';
 import ClassList from './ClassList.js';
+import ClassDetails from './ClassDetails.js';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
@@ -87,11 +88,6 @@ export default function Dashboard({ user }) {
 		e.preventDefault();
 		console.log(e.target.value)
 
-	}
-
-	const log = () => {
-
-		return <Link to='/class-detail' />
 	}
 
 	useEffect(() => {

@@ -38,5 +38,16 @@ router
       res.status(500).send(err)
     }
   })
+  .delete('/:id', async (req, res) => {
+    const id = req.params.id
+    try {
+      const user = await User.findByIdAndDelete( { _id: id } )
+      if (!user) throw new Error('User not found')
+      
+    } catch (err) {
+      console.log(err)
+    }
+    res.send('user deleted')
+  })
 
 export default router;
