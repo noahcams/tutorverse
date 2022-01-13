@@ -66,6 +66,8 @@ export default function Dashboard({ user }) {
 	}
 
 	const toggleAddAssignment = async () => {
+		// Clearing fields
+		setNewAssignment(initialNewAssignment);
 		setAssignmentShow(!assignmentShow)
 	}
 
@@ -104,7 +106,7 @@ export default function Dashboard({ user }) {
 					{user.type === 'student' && (
 							<ListGroup id="assignmentList">
 								<h2>Assignment List</h2>
-								{cls.map((cl, i) => <AssignmentList props={cl} key={i} />)}
+								{cls.map((cl, i) => <AssignmentList props={cl} key={cl._id} />)}
 							</ListGroup>
 					)}
 					</Col>
