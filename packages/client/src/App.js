@@ -29,7 +29,7 @@ function App(props) {
       <Routes>
         <Route path='/' element={loggedIn ? <Dashboard user={user} /> : renderLogin()} />
         <Route path='/assignment-list' element={loggedIn ? <AssignmentList /> : renderLogin()} />
-        <Route path='/assignment-detail' element={loggedIn ? <AssignmentDetail /> : renderLogin()} />
+        <Route path='/assignment-detail' element={loggedIn ? <AssignmentDetail user={user}/> : renderLogin()} />
         <Route path='/class-list' element={loggedIn ? <ClassList user={user} /> : renderLogin()} />
         <Route path='/class-detail/:id' element={ loggedIn ? <ClassDetails user={user} /> : renderLogin()} />
         <Route path='/student-list' element={loggedIn ? <StudentList /> : renderLogin()} />

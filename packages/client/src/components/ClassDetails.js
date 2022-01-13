@@ -15,11 +15,16 @@ export default function ClassDetails({ c, user }) {
       if (!c) {
         const clas = await axios.get(`http://localhost:3001/classes/${params.id}`)
         setCls(clas.data)
-        const studentList = await axios.get(`http://localhost:3001/users/`,{
-          params: clas.data.students
-        })
-        setStudents(studentList.data.filter(student => student.type === 'student'))
-        // setStudents(students.filter(student => student.classIds.includes(params.id)))
+        console.log(clas.data.students.length)
+        if (clas.data.students.length === 0){
+          setStudents([])
+        } else {
+
+          const studentList = await axios.get(`http://localhost:3001/users/`,{
+            params: clas.data.students
+          })
+          setStudents(studentList.data.filter(student => student.type === 'student'))
+        }
       } else {
         setCls(c)
       }
@@ -39,7 +44,7 @@ export default function ClassDetails({ c, user }) {
       </Card.Header>
       <Card.Body>
       <ListGroup>
-        { (!c || user.type === 'teacher') &&
+        { students.length > 0 &&
           students.map(s => {
             return (
               

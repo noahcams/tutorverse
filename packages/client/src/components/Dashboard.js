@@ -74,7 +74,6 @@ export default function Dashboard({ user }) {
 
 	const addClass = async (e) => {
 		e.preventDefault();
-		console.log(form)
 
 		await axios.post('http://localhost:3001/classes/', {
 			name: form,
@@ -93,6 +92,7 @@ export default function Dashboard({ user }) {
 	useEffect(() => {
 		getDashboard();
 	}, []);
+	console.log(cls);
 	
 	return (
 		<div>
@@ -102,7 +102,12 @@ export default function Dashboard({ user }) {
 					{user.type === 'student' && (
 							<ListGroup id="assignmentList">
 								<h2>Assignment List</h2>
-								{cls.map((cl, i) => <AssignmentList props={cl} key={cl._id} />)}
+								{cls.map((cl, i) => {
+									console.log(cl)
+									if (cl.assignments.length > 0){
+										return <AssignmentList user={user} key={i} />
+									}
+								})}
 							</ListGroup>
 					)}
 					</Col>
@@ -142,7 +147,12 @@ export default function Dashboard({ user }) {
 										cls.map((c) => {
 											return (
 												<ListGroup.Item className='class' key={c._id}>
-													<Link to='/class-detail' cls={c} key={c._id}>Class: {c.name}</Link>
+													<Link to={
+														{
+															pathname:`/class-detail/${c._id}`,
+															classId: c._id,
+														}
+													}>Class: {c.name}</Link>
 													<Card.Text>Students: {c.students.length}</Card.Text>
 													<Card.Text>Assignments: {c.assignments.length}</Card.Text>
 												</ListGroup.Item>
