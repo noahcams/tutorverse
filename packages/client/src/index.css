@@ -151,7 +151,6 @@ code {
 .teacher-classes, .teacher-assignments {
   display: flex;
   align-items: center;
-  width: 25rem;
 }
 
 .class {
@@ -204,10 +203,6 @@ code {
   justify-content: center;
   flex-basis: 25em;
   margin-top: 5em;
-}
-
-.name:hover {
-  cursor: pointer;
 }
 
 /* -------------------------- Create Class/Assignment Forms ------------------------------ */

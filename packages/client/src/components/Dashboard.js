@@ -3,6 +3,7 @@ import { Container, Button, ListGroup, Row, Col, Card, Modal, Form } from 'react
 import { Link } from 'react-router-dom'
 import AssignmentList from './AssignmentList.js';
 import ClassList from './ClassList.js';
+import ClassDetails from './ClassDetails.js';
 import axios from 'axios';
 
 export default function Dashboard({ user }) {
@@ -23,6 +24,10 @@ export default function Dashboard({ user }) {
 			console.error(err);
 		}
 	};
+
+	const goToDetails = (c) => {
+		return <ClassDetails cls={c} />
+	}
 
 	const handleInputChange = (event) => {
 		setForm(event.target.value)
@@ -52,11 +57,6 @@ export default function Dashboard({ user }) {
 		e.preventDefault();
 		console.log(e.target.value)
 
-	}
-
-	const log = () => {
-
-		return <Link to='/class-detail' />
 	}
 
 	useEffect(() => {
@@ -111,8 +111,13 @@ export default function Dashboard({ user }) {
 										cls.map((c) => {
 											return (
 												<ListGroup.Item className='class' key={c._id}>
-													{console.log(c)}
-													<Link to='/class-detail' cls={c} key={c._id}>Class: {c.name}</Link>
+													<Link to={
+														{
+															pathname:`/class-detail/${c._id}`,
+															classId: c._id,
+														}
+													}>Class: {c.name}</Link>
+													{console.log(c.students)}
 													<Card.Text>Students: {c.students.length}</Card.Text>
 													<Card.Text>Assignments: {c.assignments.length}</Card.Text>
 												</ListGroup.Item>
