@@ -14,7 +14,6 @@ export default function AssignmentList({ cls }) {
     } else {
       assignmentIds.map( async (as)=> {
         const fetched = await axios.get(`http://localhost:3001/assignments/${as}`)
-        console.log(fetched.data)
         setAssignments((assignments)=> [...assignments, fetched.data])
       })
       // const fetched = await axios.get(`http://localhost:3001/assignments/`,{
