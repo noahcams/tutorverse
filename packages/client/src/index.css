@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: skyblue !important;
 }
 
 code {
@@ -31,7 +32,6 @@ code {
 .dashPage {
   display: flex;
   flex-direction: column;
-  background-color: skyblue;
   height: 100vh;
   width: 100%;
   align-items: center;
@@ -172,7 +172,6 @@ code {
 }
 
 #loginPage {
-  background-color: skyblue;
   width: 100%;
   height: 100vh;
   padding-top: 3em;
