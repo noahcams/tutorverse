@@ -12,30 +12,30 @@ export default function ClassDetails({ c, user }) {
   
   const getClassDetail= async() => {
     try {
-      if (!c) {
         const clas = await axios.get(`http://localhost:3001/classes/${params.id}`)
         setCls(clas.data)
-        console.log(clas.data.students.length)
+
+        // if there are students, grab them, otherwise mark as empty array
         if (clas.data.students.length === 0){
           setStudents([])
         } else {
-
+          
           const studentList = await axios.get(`http://localhost:3001/users/`,{
             params: clas.data.students
           })
           setStudents(studentList.data.filter(student => student.type === 'student'))
         }
-      } else {
-        setCls(c)
-      }
+
 		} catch (err) {
       console.error(err);
 		}
   }
-
+  
   useEffect(() => {
-      getClassDetail()
-    }, []);
+    getClassDetail()
+  }, []);
+
+  console.log(cls.assignments)
   
   return (
     <Card>
@@ -43,14 +43,19 @@ export default function ClassDetails({ c, user }) {
         {cls.name}
       </Card.Header>
       <Card.Body>
+        <ListGroup>
+          <h4>Assignments:</h4>
+          <AssignmentList cls={cls} />
+        </ListGroup>
       <ListGroup>
+        <h4>Students:</h4>
         { students.length > 0 &&
-          students.map(s => {
-            return (
-              
-              <StudentDetails user={s} key={s._id}/>
-            )
-          })
+            students.map(s => {
+              return (
+                
+                <StudentDetails user={s} key={s._id}/>
+              )
+            })
         }
       </ListGroup>
       </Card.Body>

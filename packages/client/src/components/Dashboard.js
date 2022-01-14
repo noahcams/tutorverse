@@ -50,6 +50,12 @@ export default function Dashboard({ user }) {
 				"text": instructions,
 				"link": link
 			});
+
+			await axios.patch('http://localhost:3001/classes', { 
+				name: newAssignment.className,
+				assignment: assignmentName,
+			})
+
 			toast.success("Assignment added!");
 		} catch(err) {
 			toast.error(err.message);
@@ -98,19 +104,18 @@ export default function Dashboard({ user }) {
 		<div>
 			<Container className="dashPage">
 				<Row id="dash">
-					<Col>
 					{user.type === 'student' && (
+					<Col>
 							<ListGroup id="assignmentList">
 								<h2>Assignment List</h2>
 								{cls.map((cl, i) => {
-									console.log(cl)
 									if (cl.assignments.length > 0){
-										return <AssignmentList user={user} key={i} />
+										return <AssignmentList cls={cl} key={i} />
 									}
 								})}
 							</ListGroup>
-					)}
 					</Col>
+					)}
 
 					{user.type === 'teacher' && (
 					<Col>

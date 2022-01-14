@@ -3,36 +3,41 @@ import axios from 'axios'
 import AssignmentDetail from './AssignmentDetails.js'
 
 export default function AssignmentList({ cls }) {
-  const [clas,setClas] = useState(cls)
-  const [assignmentIds,setAssignmnentIds] = useState(["61ce49f6559649ec6c72c3b9"])
-  const [assignments,setAssignmnents] = useState([])
+  const [assignmentIds,setAssignmentIds] = useState(cls.assignments)
+  const [assignments,setAssignments] = useState([])
+  console.log(cls.assignments)
   
   let getAssignments = async () => {
     if (assignmentIds.length === 1) {
       const fetched = await axios.get(`http://localhost:3001/assignments/${assignmentIds}`)
-      setAssignmnents(fetched.data)
-    } else if (assignmentIds.length > 1) {
-      const fetched = await axios.get(`http://localhost:3001/assignments/`,{
-        params: assignmentIds
+      setAssignments([fetched.data])
+    } else {
+      assignmentIds.map( async (as)=> {
+        const fetched = await axios.get(`http://localhost:3001/assignments/${as}`)
+        console.log(fetched.data)
+        setAssignments((assignments)=> [...assignments, fetched.data])
       })
-      setAssignmnents(fetched.data)
+      // const fetched = await axios.get(`http://localhost:3001/assignments/`,{
+      //   params: assignmentIds
+      // })
+      // console.log(fetched.data)
+      // setAssignments(fetched.data)
     }
-  }          
+  }    
+
   useEffect(()=> {
     getAssignments()
   },[])
+
     return (
       <div>
-        { assignments.length > 1 &&
+        { 
+        // (assignments.length > 1) &&
 
-          assignments.map((assignment) => {
-            return <AssignmentDetail props={assignment} key={assignment._id} />
+          assignments.map((as) => {
+            console.log(as)
+            return <AssignmentDetail props={as} key={as._id} />
           })
-        }
-
-        {
-          assignmentIds.length === 1 &&
-          <AssignmentDetail props={assignments} />
         }
       </div>
     )  
