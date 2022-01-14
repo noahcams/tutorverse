@@ -1,5 +1,5 @@
 import express from 'express';
-import { Class } from '../models/index.js'
+import { Class, Assignment } from '../models/index.js'
 
 const router = express.Router()
 
@@ -24,9 +24,15 @@ router
             res.status(500).send("Error creating new class.")
         }
     })
-    .put('/', async (req, res) => {
+    .patch('/', async (req, res) => {
         try {
-            const cls = await Class.findOneAndUpdate({ name: req.body.name }, req.body);
+            const cls = await Class.findOne({ name: req.body.name });
+
+            const assignm = await Assignment.findOne({ name: req.body.assignment })
+
+            cls.assignments.push(assignm)
+            cls.save()
+
             res.send(cls);
         } catch (err) {
             res.status(500).send('Error updating class');

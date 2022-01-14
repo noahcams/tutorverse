@@ -25,12 +25,15 @@ router
     try {
       const user = await User.findOne( { _id: id} )
       if (!user) throw Error ('User not found')
+
       const classes = await Class.find( { teacher: id })
+
       classes.forEach(c => {
         if (!user.classIds.includes(c._id)) {
           user.classIds = [...user.classIds, c._id]
         } 
       })
+      
       user.save()
       res.json(user)
     } catch (err) {
