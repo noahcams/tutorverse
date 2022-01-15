@@ -26,7 +26,7 @@ export default function AssignmentList({ cls }) {
       <div>
         { 
           assignments.map((as) => {
-            return <AssignmentDetail props={as} key={as._id} />
+            return <AssignmentDetail assignment={as} key={as._id} />
           })
         }
       </div>

@@ -38,20 +38,16 @@ export default function ClassDetails() {
         {cls.name}
       </Card.Header>
       <Card.Body>
-        <ListGroup>
           <h4>Assignments:</h4> 
           {
             <AssignmentList cls={cls} />
           }
-        </ListGroup>
-      <ListGroup>
         <h4>Students:</h4>
         { students.length > 0 &&
             students.map(s => {
               return <StudentDetails user={s} key={s._id}/>
             })
         }
-      </ListGroup>
       </Card.Body>
     </Card>
   )

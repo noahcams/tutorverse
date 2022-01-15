@@ -89,12 +89,6 @@ export default function Dashboard({ user }) {
 		await axios.patch(`http://localhost:3001/users/${user._id}`)
 	}
 
-	const addAssignment = async (e) => {
-		e.preventDefault();
-		console.log(e.target.value)
-
-	}
-
 	useEffect(() => {
 		getDashboard();
 	}, []);
@@ -105,14 +99,14 @@ export default function Dashboard({ user }) {
 				<Row id="dash">
 					{user.type === 'student' && (
 					<Col>
-							<ListGroup id="assignmentList">
+							<div id="assignmentList">
 								<h2>Assignment List</h2>
 								{cls.map((cl, i) => {
 									if (cl.assignments.length > 0){
 										return <AssignmentList cls={cl} key={i} />
 									}
 								})}
-							</ListGroup>
+							</div>
 					</Col>
 					)}
 
@@ -150,16 +144,22 @@ export default function Dashboard({ user }) {
 									{
 										cls.map((c) => {
 											return (
-												<ListGroup.Item className='class' key={c._id}>
-													<Link to={
-														{
-															pathname:`/class-detail/${c._id}`
-														}
-													}>Class: {c.name}</Link>
-													<Card.Text>Students: {c.students.length}</Card.Text>
-													<Card.Text>Assignments: {c.assignments.length}</Card.Text>
-												</ListGroup.Item>
-										)})
+												<Card className="class" key={c._id}>
+													<Card.Header>
+														<Link
+															to={{
+																pathname: `/class-detail/${c._id}`,
+															}}
+														>
+															Class: {c.name}
+														</Link>
+													</Card.Header>
+													<Card.Body>
+														Students: {c.students.length}<br/>
+														Assignments: {c.assignments.length}
+													</Card.Body>
+													</Card>
+											);})
 									}
 									</ListGroup>	
 							</Card.Body>

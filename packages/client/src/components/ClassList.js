@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ClassDetails from './ClassDetails';
 
 export default function ClassList({ user }) {
   const [classes, setClasses] = useState([]);
@@ -12,7 +11,6 @@ export default function ClassList({ user }) {
     try {
       keys.map(async k => {
         const fetched = await axios.get(`http://localhost:3001/classes/${k}`)
-        console.log(fetched.data)
         setClasses([...classes, fetched.data])
       })
 
@@ -30,8 +28,6 @@ export default function ClassList({ user }) {
     // classIds.forEach(classId => getClasses(classId));
     getClasses()
   }, []);
-
-  console.log(classes);
 
   return (
     <div className="classes">

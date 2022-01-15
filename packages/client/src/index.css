@@ -49,6 +49,7 @@ code {
   justify-content: center;
   height: 100vh;
   width: 100%;
+  margin: 3em auto;
 }
 
 #topNavbar {
@@ -79,8 +80,6 @@ code {
 #assignmentList {
   display: flex;
   flex-direction: column;
-  max-width: 500px;
-  border: royalblue 5px solid;
   border-radius: 25px;
   margin: 75px;
   height: 400px;
@@ -92,16 +91,14 @@ code {
 
 .assignment {
   display: flex;
-  flex-direction: row;
-  border: royalblue 3px solid;
   width: 100%;
   font-weight: normal;
   font-size: 15px;
+  margin: 1em 1em;;
 }
 
 .assignmentName {
   display: flex;
-  justify-content: left;
   border-left: royalblue 3px solid;
   border-right: royalblue 3px solid;
   width: 50%;
@@ -165,10 +162,12 @@ code {
 
 .teacher-classes, .teacher-assignments {
   display: flex;
+  align-items: center;
 }
 
 .class {
-  width: 14rem;
+  width: 75%;
+  margin: 0.5em auto;
 }
 
 .heading {
