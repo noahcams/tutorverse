@@ -25,11 +25,21 @@ code {
 
 .navbar .logout:hover {
   cursor: pointer;  
+}
+
+.navbar a:hover, .logout:hover {
   border-bottom: 2px solid lightblue;
 }
 
-.navbar a:hover {
-  border-bottom: 2px solid lightblue;
+#logo {
+  transition: 1s;
+  backface-visibility: visible;
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+#logo:hover {
+  border-bottom: none;
+  transform: perspective(1000px) rotateY(180deg);
 }
 
 /* ------------------------- Dashboard --------------------------- */

@@ -6,7 +6,7 @@ export default function Navbar({ loggedIn, setLoggedIn, user }) {
 	return (
 		<NavBar bg="primary" variant="dark" className="navbar">
 			<Container>
-				<Link className="navbar-brand" to="/">
+				<Link className="navbar-brand" id="logo" to="/">
 					<img src="logo.png" alt="logo" />
 				</Link>
 				<Nav>
