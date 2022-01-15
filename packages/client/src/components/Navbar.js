@@ -11,14 +11,17 @@ export default function Navbar({ loggedIn, setLoggedIn, user }) {
 				</Link>
 				<Nav>
 					{loggedIn && (
-						<Container>
+						<Container className="navbar-links">
 							<Link to="/class-list" className="navbar-brand">
 								Classes
 							</Link>
 							<Link to="/assignment-list" className="navbar-brand">
 								Assignments
 							</Link>
-							<div className="navbar-brand logout" onClick={() => setLoggedIn(false)}>
+							<div className="navbar-brand logout" onClick={() => {
+								setLoggedIn(false);
+								localStorage.clear();
+								}}>
 								Log out
 							</div>
 						</Container>

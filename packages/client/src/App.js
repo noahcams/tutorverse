@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import AssignmentList from './components/AssignmentList';
@@ -16,11 +16,19 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-function App(props) {
+function App() {
 	const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
 
   const renderLogin = () => <Login setUser={setUser} setLoggedIn={setLoggedIn} />;
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('user');
+    if (loggedInUser) {
+      setUser(JSON.parse(loggedInUser));
+      setLoggedIn(true);
+    }
+  }, []);
 
   return (
     <HashRouter className="App">

@@ -3,6 +3,7 @@ import axios from 'axios'
 import AssignmentDetail from './AssignmentDetails.js'
 
 export default function AssignmentList({ cls }) {
+  const [assignmentIds] = useState(cls.assignments)
   const [assignments,setAssignments] = useState([])
   
   let getAssignments = async () => {

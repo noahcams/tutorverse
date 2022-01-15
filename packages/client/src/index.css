@@ -24,7 +24,12 @@ code {
 }
 
 .navbar .logout:hover {
-  cursor: pointer;
+  cursor: pointer;  
+  border-bottom: 2px solid lightblue;
+}
+
+.navbar a:hover {
+  border-bottom: 2px solid lightblue;
 }
 
 /* ------------------------- Dashboard --------------------------- */

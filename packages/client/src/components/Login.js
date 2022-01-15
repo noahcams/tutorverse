@@ -11,8 +11,9 @@ export default function Login({ setUser, setLoggedIn}) {
 		e.preventDefault();
 		try {
 			const res = await axios.post('http://localhost:3001/auth/signin', { username, password });
-			setUser(res.data)
-			setLoggedIn(true)
+			setUser(res.data);
+			setLoggedIn(true);
+			localStorage.setItem('user', JSON.stringify(res.data));
 		} catch (error) {
 			toast.error('Invalid username or password');
 			toast.error(error);
