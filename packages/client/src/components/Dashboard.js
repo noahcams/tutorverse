@@ -98,7 +98,6 @@ export default function Dashboard({ user }) {
 	useEffect(() => {
 		getDashboard();
 	}, []);
-	console.log(cls);
 	
 	return (
 		<div>
@@ -154,8 +153,7 @@ export default function Dashboard({ user }) {
 												<ListGroup.Item className='class' key={c._id}>
 													<Link to={
 														{
-															pathname:`/class-detail/${c._id}`,
-															classId: c._id,
+															pathname:`/class-detail/${c._id}`
 														}
 													}>Class: {c.name}</Link>
 													<Card.Text>Students: {c.students.length}</Card.Text>

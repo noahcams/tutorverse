@@ -3,24 +3,17 @@ import axios from 'axios'
 import AssignmentDetail from './AssignmentDetails.js'
 
 export default function AssignmentList({ cls }) {
-  const [assignmentIds,setAssignmentIds] = useState(cls.assignments)
   const [assignments,setAssignments] = useState([])
-  console.log(cls.assignments)
   
   let getAssignments = async () => {
-    if (assignmentIds.length === 1) {
-      const fetched = await axios.get(`http://localhost:3001/assignments/${assignmentIds}`)
+    if (cls.assignments.length === 1) {
+      const fetched = await axios.get(`http://localhost:3001/assignments/${cls.assignments}`)
       setAssignments([fetched.data])
     } else {
-      assignmentIds.map( async (as)=> {
+      cls.assignments.map( async (as)=> {
         const fetched = await axios.get(`http://localhost:3001/assignments/${as}`)
         setAssignments((assignments)=> [...assignments, fetched.data])
       })
-      // const fetched = await axios.get(`http://localhost:3001/assignments/`,{
-      //   params: assignmentIds
-      // })
-      // console.log(fetched.data)
-      // setAssignments(fetched.data)
     }
   }    
 
@@ -31,10 +24,7 @@ export default function AssignmentList({ cls }) {
     return (
       <div>
         { 
-        // (assignments.length > 1) &&
-
           assignments.map((as) => {
-            console.log(as)
             return <AssignmentDetail props={as} key={as._id} />
           })
         }
