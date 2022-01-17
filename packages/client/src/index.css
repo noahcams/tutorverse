@@ -96,6 +96,14 @@ code {
   margin: 0.6em 1em;
 }
 
+.class a, .assignment a {
+  text-decoration: none;
+}
+
+.class a:hover, .assignment a:hover {
+  text-decoration: underline;
+}
+
 .assignmentName {
   display: flex;
   border-left: royalblue 3px solid;
