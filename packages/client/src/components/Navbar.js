@@ -15,12 +15,12 @@ export default function Navbar({ loggedIn, setLoggedIn, user }) {
 							<Link to="/class-list" className="navbar-brand">
 								Classes
 							</Link>
-							<div className="navbar-brand logout" onClick={() => {
+							<Link to="/" className="navbar-brand logout" onClick={() => {
 								setLoggedIn(false);
 								localStorage.clear();
 								}}>
 								Log out
-							</div>
+							</Link>
 						</Container>
 					)}
 				</Nav>
