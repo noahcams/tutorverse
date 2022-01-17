@@ -27,6 +27,7 @@ router
     .patch('/', async (req, res) => {
         try {
             const cls = await Class.findOne({ name: req.body.name });
+            if (!cls) throw new Error("Class not found.")
 
             const assignm = await Assignment.findOne({ name: req.body.assignment })
 

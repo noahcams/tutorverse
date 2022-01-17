@@ -2,7 +2,6 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
-import AssignmentList from './components/AssignmentList';
 import AssignmentDetail from './components/AssignmentDetails';
 import ClassList from './components/ClassList';
 import ClassDetails from './components/ClassDetails';
@@ -37,13 +36,10 @@ function App() {
       <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} user={user} />
       <Routes>
         <Route path='/' element={loggedIn ? <Dashboard user={user} cls={cls} setCls={setCls} /> : renderLogin()} />
-        <Route path='/assignment-list' element={loggedIn ? <AssignmentList cls={cls} /> : renderLogin()} />
         <Route path='/assignment-detail' element={loggedIn ? <AssignmentDetail user={user}/> : renderLogin()} />
-        <Route path='/class-list' element={loggedIn ? <ClassList user={user} /> : renderLogin()} />
+        <Route path='/class-list' element={loggedIn ? <ClassList user={user} cls={cls} /> : renderLogin()} />
         <Route path='/class-detail/:id' element={ loggedIn ? <ClassDetails user={user} /> : renderLogin()} />
         <Route path='/student-list' element={loggedIn ? <StudentList /> : renderLogin()} />
-        <Route path='/student-details' element={loggedIn ? <StudentDetails user={user} /> : renderLogin()} />
-        <Route path='/teacher-details' element={loggedIn ? <TeacherDetails /> : renderLogin()} />
       </Routes>
     </HashRouter>
     

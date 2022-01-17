@@ -15,9 +15,6 @@ export default function Navbar({ loggedIn, setLoggedIn, user }) {
 							<Link to="/class-list" className="navbar-brand">
 								Classes
 							</Link>
-							<Link to="/assignment-list" className="navbar-brand">
-								Assignments
-							</Link>
 							<div className="navbar-brand logout" onClick={() => {
 								setLoggedIn(false);
 								localStorage.clear();
