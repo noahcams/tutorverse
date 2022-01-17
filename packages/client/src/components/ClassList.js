@@ -34,6 +34,10 @@ export default function ClassList({ user }) {
     console.log(classes)
   }, []);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ff4dacb (class details)
   return (
     <div className="classes">
       {/* {classes.map((cls, i) => <ClassDetails cls={cls} key={i} />)} */}
