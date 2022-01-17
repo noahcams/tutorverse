@@ -6,14 +6,12 @@ import AssignmentDetail from './components/AssignmentDetails';
 import ClassList from './components/ClassList';
 import ClassDetails from './components/ClassDetails';
 import StudentList from './components/StudentList';
-import StudentDetails from './components/StudentDetails';
-import TeacherDetails from './components/TeacherDetails';
 import Navbar from './components/Navbar';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 
 function App() {

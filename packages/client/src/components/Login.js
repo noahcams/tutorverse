@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { Oval } from 'react-loader-spinner';
+// import { Oval } from 'react-loader-spinner';
 
 export default function Login({ setUser, setLoggedIn}) {
 	const [username, setUsername] = useState('');
@@ -56,7 +56,7 @@ export default function Login({ setUser, setLoggedIn}) {
 									/>
 								</Form.Group>
 								<Button variant="primary" type="submit">
-									{isLoading ? (
+									{/* {isLoading ? (
 										<Oval
 											height="20"
 											width="20"
@@ -65,7 +65,8 @@ export default function Login({ setUser, setLoggedIn}) {
 										/>
 									) : (
 										'Log In'
-									)}
+									)} */}
+									Log In
 								</Button>
 							</Form>
 						</Col>

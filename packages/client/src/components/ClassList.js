@@ -26,7 +26,7 @@ export default function ClassList({ user }) {
   return (
     <div className="classes">
       {/* {classes.map((cls, i) => <ClassDetails cls={cls} key={i} />)} */}
-      {user.type === 'student' && (
+      {
 						
             classes.map((c) => {
               return (
@@ -47,7 +47,7 @@ export default function ClassList({ user }) {
                   </Card>
               )
             })
-        )}
+        }
     </div>
   )
 }
