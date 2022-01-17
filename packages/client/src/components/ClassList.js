@@ -13,19 +13,12 @@ export default function ClassList({ user }) {
 
   const getClasses = async () => {
     try {
-<<<<<<< HEAD
-      keys.map(async k => {
-        const fetched = await axios.get(`http://localhost:3001/classes/${k}`)
-        setClasses([...classes, fetched.data])
-      })
-=======
       keys.map(k => getResource(k))
 
       // keys.map(async k => {
       //   const fetched = await axios.get(`http://localhost:3001/classes/${k}`)
       //   setClasses([...classes, fetched.data])
       // })
->>>>>>> ff4dacb (class details)
 
       // const cls = await axios.get(`http://localhost:3001/classes/${classId}`);
       // setClasses((classes) => [...classes, cls.data]);
@@ -43,13 +36,6 @@ export default function ClassList({ user }) {
     console.log(classes)
   }, []);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> ff4dacb (class details)
-
->>>>>>> ff4dacb (class details)
   return (
     <div className="classes">
       {/* {classes.map((cls, i) => <ClassDetails cls={cls} key={i} />)} */}
