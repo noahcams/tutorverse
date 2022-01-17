@@ -18,12 +18,12 @@ export default function AssignmentList({ cls }) {
   },[])
 
     return (
-      <div>
+      <>
         { 
           assignments.map((as) => {
             return <AssignmentDetail assignment={as} key={as._id} />
           })
         }
-      </div>
+      </>
     )  
 }
