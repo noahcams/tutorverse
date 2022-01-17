@@ -14,8 +14,7 @@ const initialNewAssignment = {
 	instructions: ''
 };
 
-export default function Dashboard({ user }) {
-	const [cls, setCls] = useState([]);
+export default function Dashboard({ user, cls, setCls }) {
 	const [keys, setKeys] = useState(user.classIds);
 	const [clsShow, setClsShow] = useState(false);
 	const [assignmentShow, setAssignmentShow] = useState(false);

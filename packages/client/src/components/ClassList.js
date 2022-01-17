@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function ClassList({ user }) {
-  const [classes, setClasses] = useState([]);
+  const [classes, setClasses] = useState();
 	const [keys, setKeys] = useState(user.classIds);
 
-  console.log(keys)
+  async function getResource(resource) {
+    const { data } = await axios.get(`http://localhost:3001/classes/${resource}`)
+    console.log(data)
+    setClasses([...classes, data])
+  }
 
   const getClasses = async () => {
     try {
@@ -27,6 +31,7 @@ export default function ClassList({ user }) {
   useEffect(() => {
     // classIds.forEach(classId => getClasses(classId));
     getClasses()
+    console.log(classes)
   }, []);
 
   return (

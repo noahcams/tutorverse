@@ -18,6 +18,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
 	const [user, setUser] = useState({});
+	const [cls, setCls] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
 
   const renderLogin = () => <Login setUser={setUser} setLoggedIn={setLoggedIn} />;
@@ -35,8 +36,8 @@ function App() {
       <ToastContainer />
       <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} user={user} />
       <Routes>
-        <Route path='/' element={loggedIn ? <Dashboard user={user} /> : renderLogin()} />
-        <Route path='/assignment-list' element={loggedIn ? <AssignmentList /> : renderLogin()} />
+        <Route path='/' element={loggedIn ? <Dashboard user={user} cls={cls} setCls={setCls} /> : renderLogin()} />
+        <Route path='/assignment-list' element={loggedIn ? <AssignmentList cls={cls} /> : renderLogin()} />
         <Route path='/assignment-detail' element={loggedIn ? <AssignmentDetail user={user}/> : renderLogin()} />
         <Route path='/class-list' element={loggedIn ? <ClassList user={user} /> : renderLogin()} />
         <Route path='/class-detail/:id' element={ loggedIn ? <ClassDetails user={user} /> : renderLogin()} />
