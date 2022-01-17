@@ -81,7 +81,7 @@ code {
   display: flex;
   flex-direction: column;
   border-radius: 25px;
-  height: 400px;
+  margin: 75px;
   background-color: palegoldenrod;
   align-items: center;
   font-weight: bold;
@@ -90,7 +90,7 @@ code {
 
 .assignment {
   display: flex;
-  width: 100%;
+  width: 92%;
   font-weight: normal;
   font-size: 15px;
   margin: 0.6em 1em;

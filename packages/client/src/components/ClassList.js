@@ -1,44 +1,53 @@
 import React, { useState, useEffect } from 'react';
+import { Container, Button, ListGroup, Row, Col, Card, Modal, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 export default function ClassList({ user }) {
-  const [classes, setClasses] = useState();
+  const [classes, setClasses] = useState([]);
 	const [keys, setKeys] = useState(user.classIds);
-
-  async function getResource(resource) {
-    const { data } = await axios.get(`http://localhost:3001/classes/${resource}`)
-    console.log(data)
-    setClasses([...classes, data])
-  }
 
   const getClasses = async () => {
     try {
-      keys.map(k => getResource(k))
-
-      // keys.map(async k => {
-      //   const fetched = await axios.get(`http://localhost:3001/classes/${k}`)
-      //   setClasses([...classes, fetched.data])
-      // })
-
-      // const cls = await axios.get(`http://localhost:3001/classes/${classId}`);
-      // setClasses((classes) => [...classes, cls.data]);
-      // const classes = await axios.get(`http://localhost:3001/classes/`,{
-			// 	params: keys
-			// })
+      user.classIds.map(async id => {
+        const cls = await axios.get(`http://localhost:3001/classes/${id}`);
+        setClasses((classes)=> [...classes, cls.data])
+      })
     } catch(err) {
       console.error(err);
     }
   }
   
   useEffect(() => {
-    // classIds.forEach(classId => getClasses(classId));
     getClasses()
-    console.log(classes)
   }, []);
-
+  
+  console.log(classes)
   return (
     <div className="classes">
       {/* {classes.map((cls, i) => <ClassDetails cls={cls} key={i} />)} */}
+      {user.type === 'student' && (
+						
+            classes.map((c) => {
+              return (
+                <Card className="class" key={c._id}>
+                  <Card.Header>
+                    <Link
+                      to={{
+                        pathname: `/class-detail/${c._id}`,
+                      }}
+                    >
+                      Class: {c.name}
+                    </Link>
+                  </Card.Header>
+                  <Card.Body>
+                    Students: {c.students.length}<br/>
+                    Assignments: {c.assignments.length}
+                  </Card.Body>
+                  </Card>
+              )
+            })
+        )}
     </div>
   )
 }
