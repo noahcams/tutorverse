@@ -138,6 +138,9 @@ export default function Dashboard({ user, cls, setCls }) {
 									</Form>
 								</Modal.Body>
 								<Modal.Footer>
+									<Button variant="danger" onClick={toggleAddClass}>
+										Discard Changes
+									</Button>
 									<Button variant="primary" onClick={addClass}>
 									{isLoading ? (
 										<Oval
@@ -149,9 +152,6 @@ export default function Dashboard({ user, cls, setCls }) {
 									) : (
 										'Save Class'
 									)}
-									</Button>
-									<Button variant="danger" onClick={toggleAddClass}>
-										Discard Changes
 									</Button>
 								</Modal.Footer>
 							</Modal>
