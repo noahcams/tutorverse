@@ -50,7 +50,6 @@ export default function Dashboard({ user, cls, setCls }) {
 				"text": instructions,
 				"link": link
 			});
-
 			await axios.patch('http://localhost:3001/classes', { 
 				name: newAssignment.className,
 				assignment: assignmentName,
@@ -74,7 +73,6 @@ export default function Dashboard({ user, cls, setCls }) {
 	}
 
 	const toggleAddAssignment = async () => {
-		// Clearing fields
 		setNewAssignment(initialNewAssignment);
 		setAssignmentShow(!assignmentShow)
 	}

@@ -15,7 +15,6 @@ export default function ClassDetails({user}) {
     try {
         const fetched = await axios.get(`http://localhost:3001/classes/${params.id}`)
         setCls(fetched.data)
-
         if (fetched.data.students.length === 0){
           setStudents([])
         } else {
@@ -25,7 +24,6 @@ export default function ClassDetails({user}) {
           })
           setStudents(students.filter(s => s.type === 'student'))
         }
-
         fetched.data.assignments.map( async (as)=> {
           const fetched = await axios.get(`http://localhost:3001/assignments/${as}`)
           setAssignments((assignments)=> [...assignments, fetched.data])
@@ -33,12 +31,10 @@ export default function ClassDetails({user}) {
       } catch (err) {
         console.error(err);
       }
-    }
-    
+    }    
     useEffect(() => {
       getClassDetail()
-    }, []);
-    
+    }, []);    
     return (
       <Card>
       <Card.Header className='name'>
@@ -46,13 +42,12 @@ export default function ClassDetails({user}) {
       </Card.Header>
       <Card.Body>
           <h4>Assignments:</h4> 
-          {
-            assignments.map((as) => {
+          {assignments.map((as) => {
               return <AssignmentDetail assignment={as} key={as._id} />
               })
           }
             <h4>Students:</h4>
-         {students.length > 0 &&
+          {students.length > 0 &&
             students.map(s => {
               return <StudentDetails user={s} cls={cls} key={s._id}/>
             })
