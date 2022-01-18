@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Container, Button, ListGroup, Row, Col, Card, Modal, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import AssignmentList from './AssignmentList.js';
-import ClassList from './ClassList.js';
-import ClassDetails from './ClassDetails.js';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Oval } from 'react-loader-spinner';
 
 const initialNewAssignment = {
 	className: '',
@@ -15,11 +14,12 @@ const initialNewAssignment = {
 };
 
 export default function Dashboard({ user, cls, setCls }) {
-	const [keys, setKeys] = useState(user.classIds);
+	const [keys] = useState(user.classIds);
 	const [clsShow, setClsShow] = useState(false);
 	const [assignmentShow, setAssignmentShow] = useState(false);
 	const [form, setForm] = useState('');
 	const [newAssignment, setNewAssignment] = useState(initialNewAssignment);
+	const [isLoading, setIsLoading] = useState(false);
 
 	let getDashboard = async () => {
 		//
@@ -44,6 +44,7 @@ export default function Dashboard({ user, cls, setCls }) {
 	const handleAddAssignment = async () => {
 		const { assignmentName, instructions, link } = newAssignment;
 		try {
+			setIsLoading(true);
 			await axios.post('http://localhost:3001/assignments/', {
 				"name": assignmentName,
 				"text": instructions,
@@ -54,9 +55,10 @@ export default function Dashboard({ user, cls, setCls }) {
 				name: newAssignment.className,
 				assignment: assignmentName,
 			})
-
+			setIsLoading(false);
 			toast.success("Assignment added!");
 		} catch(err) {
+			setIsLoading(false);
 			toast.error(err.message);
 			console.error(err);
 		}
@@ -79,13 +81,19 @@ export default function Dashboard({ user, cls, setCls }) {
 
 	const addClass = async (e) => {
 		e.preventDefault();
-
-		await axios.post('http://localhost:3001/classes/', {
-			name: form,
-			teacher: user._id, 
-		})
-
-		await axios.patch(`http://localhost:3001/users/${user._id}`)
+		try {
+			setIsLoading(true)
+			await axios.post('http://localhost:3001/classes/', {
+				name: form,
+				teacher: user._id, 
+			})
+			await axios.patch(`http://localhost:3001/users/${user._id}`)
+			setIsLoading(false)
+		} catch (err) {
+			setIsLoading(false)
+			toast.error('Error adding class')
+			console.error('Adding class error: ', err.message)
+		}
 	}
 
 	useEffect(() => {
@@ -118,7 +126,7 @@ export default function Dashboard({ user, cls, setCls }) {
 									Create a Class:
 								</Modal.Header>
 								<Modal.Body>
-									<Form id='create-class' onSubmit={addClass}>
+									<Form id='create-class'>
 										<Form.Group>
 											<Form.Label>Class Name</Form.Label>
 											<Form.Control 
@@ -127,12 +135,21 @@ export default function Dashboard({ user, cls, setCls }) {
 												onChange={handleInputChange}/>
 										</Form.Group>
 										
-									<Button variant="primary" type='submit'>
-										Save Class
-									</Button>
 									</Form>
 								</Modal.Body>
 								<Modal.Footer>
+									<Button variant="primary" onClick={addClass}>
+									{isLoading ? (
+										<Oval
+											height="20"
+											width="20"
+											color="white"
+											arialLabel="loading"
+										/>
+									) : (
+										'Save Class'
+									)}
+									</Button>
 									<Button variant="danger" onClick={toggleAddClass}>
 										Discard Changes
 									</Button>
@@ -204,7 +221,14 @@ export default function Dashboard({ user, cls, setCls }) {
 										Discard Changes
 									</Button>
 									<Button variant="primary" onClick={handleAddAssignment}>
-										Save Changes
+										{isLoading ? (
+										<Oval
+											height="20"
+											width="20"
+											color="white"
+											arialLabel="loading"
+										/>
+									) : 'Save Changes'}
 									</Button>
 								</Modal.Footer>
 							</Modal>

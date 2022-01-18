@@ -3,7 +3,6 @@ import {
   ListGroup,
   Card,
 } from 'react-bootstrap'
-import axios from 'axios'
 
 export default function StudentDetails({ user }) {
   function calculateAverage(grades) {
