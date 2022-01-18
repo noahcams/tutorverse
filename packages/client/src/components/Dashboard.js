@@ -89,6 +89,8 @@ export default function Dashboard({ user, cls, setCls }) {
 			})
 			await axios.patch(`http://localhost:3001/users/${user._id}`)
 			setIsLoading(false)
+			toast.success('Class created!')
+			toggleAddClass()
 		} catch (err) {
 			setIsLoading(false)
 			toast.error('Error adding class')
