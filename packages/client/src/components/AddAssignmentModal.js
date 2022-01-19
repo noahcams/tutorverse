@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Modal, Button } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Oval } from "react-loader-spinner";
 
 export default function AddAssignmentModal({ showModal, onClose }) {
   const initialNewAssignment = {
@@ -13,6 +14,7 @@ export default function AddAssignmentModal({ showModal, onClose }) {
 
   const [newAssignment, setNewAssignment] = useState(initialNewAssignment);
   const [show, setShow] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggleAddAssignment = () => {
     setNewAssignment(initialNewAssignment);
@@ -34,6 +36,7 @@ export default function AddAssignmentModal({ showModal, onClose }) {
   const handleAddAssignment = async () => {
     const { assignmentName, instructions, link } = newAssignment;
     try {
+      setIsLoading(true);
       await axios.post("http://localhost:3001/assignments/", {
         name: assignmentName,
         text: instructions,
@@ -43,9 +46,11 @@ export default function AddAssignmentModal({ showModal, onClose }) {
         name: newAssignment.className,
         assignment: assignmentName,
       });
+      setIsLoading(false);
       toast.success("Assignment added!");
     } catch (err) {
-      toast.error(err.message);
+      setIsLoading(false);
+      toast.error("Class not found.");
       console.error(err);
     }
     toggleAddAssignment();
@@ -112,7 +117,11 @@ export default function AddAssignmentModal({ showModal, onClose }) {
             Discard Changes
           </Button>
           <Button variant="primary" onClick={handleAddAssignment}>
-            Save Changes
+          {isLoading ? (
+              <Oval height="20" width="20" color="white" arialLabel="loading" />
+            ) : (
+              "Save Changes"
+            )}
           </Button>
         </Modal.Footer>
       </Modal>

@@ -5,7 +5,7 @@ import { Card, Button, ButtonToolbar, Modal } from "react-bootstrap";
 import AssignmentDetail from "./AssignmentDetails";
 import StudentDetails from "./StudentDetails";
 import AddAssignmentModal from "./AddAssignmentModal.js";
-import AddStudentModal from "./AddStudentModal.js"
+import AddStudentModal from "./AddStudentModal.js";
 import { calculateAverage } from "../utils/helpers.js";
 
 export default function ClassDetails({ user }) {
@@ -47,12 +47,15 @@ export default function ClassDetails({ user }) {
     <Card>
       <Card.Header className="name">{cls.name}</Card.Header>
       <ButtonToolbar className="p-4">
-        <AddAssignmentModal
-          showModal={assignmentShow}
-          onClose={() => setAssignmentShow(false)}
-        />
-
-        <AddStudentModal cls={cls} />
+        {user.type === "teacher" && (
+          <>
+            <AddAssignmentModal
+              showModal={assignmentShow}
+              onClose={() => setAssignmentShow(false)}
+            />
+            <AddStudentModal cls={cls} />
+          </>
+        )}
       </ButtonToolbar>
       <Card.Body>
         {user.type === "student" && (

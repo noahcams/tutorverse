@@ -27,15 +27,20 @@ router
   .patch("/", async (req, res) => {
     if (req.body.studentName) {
       try {
-        console.log(req.body)
         const cls = await Class.findOne({ name: req.body.clsName });
         if (!cls) throw new Error("Class not found.");
 
         const student = await User.findOne({ username: req.body.studentName });
         if (!student) throw new Error("User not found.");
 
-        cls.students.push(student);
-        cls.save();
+        if (!cls.students.includes(student._id)) {
+          cls.students.push(student);
+          cls.save();
+          student.classIds.push(cls);
+          student.save();
+        } else {
+          throw new Error("Student is already in the class.");
+        }
 
         res.send(cls);
       } catch (err) {
@@ -48,14 +53,14 @@ router
         if (!cls) throw new Error("Class not found.");
 
         const assignm = await Assignment.findOne({ name: req.body.assignment });
-        if (!assignm) throw new Error("Assignment not found.")
+        if (!assignm) throw new Error("Assignment not found.");
 
         cls.assignments.push(assignm);
         cls.save();
 
         res.send(cls);
       } catch (err) {
-        res.status(500).send("Error updating class");
+        res.status(404).send("Class not found");
       }
     }
   });

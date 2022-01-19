@@ -75,7 +75,7 @@ export default function Dashboard({ user, cls, setCls }) {
 
           {user.type === "teacher" && (
             <Col>
-              <Card>
+              <Card className='classesBox'>
                 <h2 className="heading">Classes</h2>{" "}
                 <Button id="add-class" onClick={toggleAddClass}>
                   Add a Class
@@ -85,7 +85,7 @@ export default function Dashboard({ user, cls, setCls }) {
                     Create a Class:
                   </Modal.Header>
                   <Modal.Body>
-                    <Form id="create-class" onSubmit={addClass}>
+                    <Form id="create-class">
                       <Form.Group>
                         <Form.Label>Class Name</Form.Label>
                         <Form.Control
@@ -94,15 +94,14 @@ export default function Dashboard({ user, cls, setCls }) {
                           onChange={handleInputChange}
                         />
                       </Form.Group>
-
-                      <Button variant="primary" type="submit">
-                        Save Class
-                      </Button>
                     </Form>
                   </Modal.Body>
                   <Modal.Footer>
                     <Button variant="danger" onClick={toggleAddClass}>
                       Discard Changes
+                    </Button>
+                    <Button variant="primary" onClick={addClass}>
+                      Save Class
                     </Button>
                   </Modal.Footer>
                 </Modal>
@@ -136,9 +135,12 @@ export default function Dashboard({ user, cls, setCls }) {
 
           {user.type === "teacher" && (
             <Col>
-              <Card>
+              <Card className='assignmentsBox'>
                 <h2 className="heading">Assignments</h2>{" "}
-                <AddAssignmentModal showModal={assignmentShow} onClose={() => setAssignmentShow(false)}/>
+                <AddAssignmentModal
+                  showModal={assignmentShow}
+                  onClose={() => setAssignmentShow(false)}
+                />
                 <Card.Body className="teacher-assignments">
                   {cls.map((c, i) => {
                     return <AssignmentList cls={c} key={i} />;

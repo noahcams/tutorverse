@@ -22,7 +22,7 @@ router
             newAssignment.save()    
             res.send(newAssignment)
         } catch (err){
-            res.status(500).send("Error creating new assignment.")
+            res.status(404).send("Error creating new assignment.")
         }        
     })
     .delete(async (req, res) => {

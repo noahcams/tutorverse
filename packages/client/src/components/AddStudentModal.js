@@ -15,15 +15,11 @@ export default function AddStudentModal({ cls }) {
 
   const handleStudentName = (e) => {
     setStudentName(e.target.value);
-    console.log(studentName);
   };
-
-  console.log(cls);
 
   const handleAddStudent = async () => {
     try {
       setIsLoading(true);
-      //axios call
       await axios.patch("http://localhost:3001/classes", {
         studentName: studentName,
         clsName: cls.name,
@@ -35,7 +31,6 @@ export default function AddStudentModal({ cls }) {
     } catch (err) {
       setIsLoading(false);
       toast.error(err.message);
-      console.error(err);
     }
   };
 

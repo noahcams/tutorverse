@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -9,7 +9,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -24,10 +24,11 @@ code {
 }
 
 .navbar .logout:hover {
-  cursor: pointer;  
+  cursor: pointer;
 }
 
-.navbar a:hover, .logout:hover {
+.navbar a:hover,
+.logout:hover {
   border-bottom: 2px solid lightblue;
 }
 
@@ -96,11 +97,13 @@ code {
   margin: 0.6em 1em;
 }
 
-.class a, .assignment a {
+.class a,
+.assignment a {
   text-decoration: none;
 }
 
-.class a:hover, .assignment a:hover {
+.class a:hover,
+.assignment a:hover {
   text-decoration: underline;
 }
 
@@ -157,7 +160,6 @@ code {
 
 /* ------------------------- Teacher Dashboard -------------------------- */
 
-
 .teacherDetail {
   display: flex;
   flex-direction: column;
@@ -167,7 +169,8 @@ code {
   height: 40%;
 }
 
-.teacher-classes, .teacher-assignments {
+.teacher-classes,
+.teacher-assignments {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -179,14 +182,19 @@ code {
 }
 
 .heading {
+  color: black;
   text-align: center;
   padding: 20px;
   font-size: 40px;
-  background-color: rgb(224, 224, 224);
+  border-radius: 25px;
+  height: 2.5em;
 }
 
-.button-margin {
-  margin-right: 20px;
+.classesBox,
+.assignmentsBox {
+  background-color: palegoldenrod !important;
+  border: royalblue 5px solid !important;
+  border-radius: 40px !important;
 }
 
 /* ------------------------- Login -------------------------- */
@@ -230,8 +238,6 @@ code {
 }
 
 /* -------------------------- Create Class/Assignment Forms ------------------------------ */
-
-
 
 #create-assignment {
   display: flex;
