@@ -10,7 +10,7 @@ import Navbar from './components/Navbar';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App() {

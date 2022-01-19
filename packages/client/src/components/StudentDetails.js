@@ -3,13 +3,10 @@ import {
   ListGroup,
   Card,
 } from 'react-bootstrap'
+import { calculateAverage } from '../utils/helpers.js'
+
 
 export default function StudentDetails({ user }) {
-  function calculateAverage(grades) {
-    let average = 0
-    grades.forEach(g => average += g.grade)
-    return average / grades.length
-  }
   useEffect(() => {
   },[])
   return (
@@ -19,7 +16,7 @@ export default function StudentDetails({ user }) {
             {user.username}
           </Card.Header>
           <Card.Body>
-              <Card.Text>Overall Grade: {calculateAverage(user.grades).toFixed(2)}</Card.Text>
+              <Card.Text>Overall Grade: {calculateAverage(user.grades).toFixed(2)}%</Card.Text>
           </Card.Body>
         </Card> 
       </ListGroup.Item>

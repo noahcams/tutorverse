@@ -185,6 +185,10 @@ code {
   background-color: rgb(224, 224, 224);
 }
 
+.button-margin {
+  margin-right: 20px;
+}
+
 /* ------------------------- Login -------------------------- */
 
 .login {
